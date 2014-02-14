@@ -7,6 +7,9 @@
     <meta name="description" content="jQuery.plainOverlay : The simple jQuery Plugin for customizable overlay which covers a page, elements or iframe-windows that is specified." />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/sample.css">
+<!--xxx-->    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="javascripts/jquery.plainoverlay.min.js"></script>
 
     <title>jQuery.plainOverlay</title>
   </head>
@@ -31,14 +34,73 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>
-<a name="jqueryplainoverlay" class="anchor" href="#jqueryplainoverlay"><span class="octicon octicon-link"></span></a>jQuery.plainOverlay</h1>
 
-<p>The simple jQuery Plugin for customizable overlay which covers a page, elements or iframe-windows that is specified. plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file (11KB minified).<br><strong>See <a href="http://anseki.github.io/jquery-plainoverlay">DEMO</a></strong></p>
+<!-- ======== sample -->
+<div id="sample-style">
+<p class="sample-head">jQuery.plainOverlay</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+<!-- ======== /sample -->
+
+<p>The simple jQuery Plugin for customizable overlay which covers a page, elements or iframe-windows that is specified. plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file (11KB minified).</p>
+
+<!-- ======== sample -->
+<div class="sample-button" id="sample-button1">Show Sample</div>
+<script>
+var onSampleButton1;
+$('#sample-button1').click(function() {
+  if (onSampleButton1) {
+    $('#sample-style').plainOverlay('hide');
+    $(this).text('Show Sample');
+  } else {
+    $('#sample-style').plainOverlay('show');
+    $(this).text('Hide Sample');
+  }
+  onSampleButton1 = !onSampleButton1;
+}).click();
+</script>
+<!-- ======== /sample -->
 
 <p>This is used for making users wait until the your application is ready.<br>
-The elements under overlay don't accept access via mouse or keyboard. And scrollable element (e.g. <code>&lt;body&gt;</code>, <code>&lt;div style="overflow:scroll"&gt;</code> or <code>&lt;iframe&gt;</code>) which is specified can't scroll.<br>
-Your progress-element (messages or images that means "Please wait...") can be shown to users on the overlay. You can free style it to perfect match for your web site. Or plainOverlay has a simple builtin progress-element.</p>
+The elements under overlay don't accept access via mouse or keyboard. And scrollable element (e.g. <code>&lt;body&gt;</code>, <code>&lt;div style="overflow:scroll"&gt;</code> or <code>&lt;iframe&gt;</code>) which is specified can't scroll.</p>
+
+<!-- ======== sample -->
+<div id="sample-frame"><iframe src="iframe.html"></iframe></div>
+<p style="font-size: 22px; font-weight: bold;"><code>&lt;iframe&gt;</code></p>
+<div class="sample-button" id="sample-button2">Show Sample</div>
+<script>
+var onSampleButton2;
+$('#sample-button2').click(function() {
+  if (onSampleButton2) {
+    $('sample-frame iframe').plainOverlay('hide');
+    $(this).text('Show Sample');
+  } else {
+    $('sample-frame iframe').plainOverlay('show');
+    $(this).text('Hide Sample');
+  }
+  onSampleButton2 = !onSampleButton2;
+});
+</script>
+<!-- ======== /sample -->
+
+<!-- ======== sample -->
+<p style="font-size: 22px; font-weight: bold;"><code>&lt;body&gt;</code></p>
+<div class="sample-button" id="sample-button3">Show Sample</div>
+<script>
+$('#sample-button3').click(function() {
+  var count = 5, progress = $('<div style="font-size: 300px; color: #fff;">5</div>');
+  $('body').plainOverlay('show', {progress: function() { return progress; }});
+  setTimeout(function() { $('body').plainOverlay('hide'); }, 5000);
+  function countDown() {
+    progress.text(--count);
+    setTimeout(countDown, 1000);
+  }
+  setTimeout(countDown, 1000);
+});
+</script>
+<!-- ======== /sample -->
+
+<p>Your progress-element (messages or images that means "Please wait...") can be shown to users on the overlay. You can free style it to perfect match for your web site. Or plainOverlay has a simple builtin progress-element.</p>
 
 <p>plainOverlay do:</p>
 
@@ -185,12 +247,8 @@ The builtin element (default) is shown via CSS Animations in modern browsers (e.
 <li>If target is <code>&lt;iframe&gt;</code> element, jQuery 1.10.3+ or 2.0.4+ must be used. (see <a href="http://bugs.jquery.com/ticket/14180">#14180: focusin/out special events don't work cross-window</a>)</li>
 <li>As everyone knows, IE8- has many problems. CSS <code>position:fixed</code> in HTML without <code>&lt;!DOCTYPE&gt;</code> is ignored.<br>
 If your web site supports IE8- and it use <code>position:fixed</code>, HTML must include <code>&lt;!DOCTYPE&gt;</code> even if plainOverlay is not used. And plainOverlay uses <code>position:fixed</code>.</li>
-</ul><h2>
-<a name="release-history" class="anchor" href="#release-history"><span class="octicon octicon-link"></span></a>Release History</h2>
-
-<ul>
-<li>2014-02-14           v0.1.0          Initial release.</li>
 </ul>
+
       </section>
     </div>
 
