@@ -126,10 +126,10 @@ $('#list').plainOverlay({opacity: 0.6});
 
 ### `progress`
 
-Type: jQuery-Element or Boolean (`false`)  
+Type: Function or Boolean  
 Default: Builtin Element
 
-The specified jQuery-Element is shown to user as progress-element on overlay. This is usually messages or images that means "Please wait...".  
+The jQuery-Element that is returned by specified Function is shown to user as progress-element on overlay. This is usually messages or images that means "Please wait...".  
 If `false` is specified, nothing is shown on overlay.  
 The builtin element (default) is shown via CSS Animations in modern browsers (e.g. Firefox, Chrome, etc.), and it is shown via simple effect in legacy browsers (IE9, IE8, etc.).
 
