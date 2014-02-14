@@ -50,6 +50,8 @@
 
 #sample-frame {
   float: right;
+  width: 250px;
+  height: 150px;
   border: 2px solid #186db4;
 }
 #sample-frame iframe {
