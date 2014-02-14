@@ -230,14 +230,16 @@ Default: <code>0.3</code></p>
 <a name="progress" class="anchor" href="#progress"><span class="octicon octicon-link"></span></a><code>progress</code>
 </h3>
 
-<p>Type: jQuery-Element or Boolean (<code>false</code>)<br>
+<p>Type: Function or Boolean<br>
 Default: Builtin Element</p>
 
-<p>The specified jQuery-Element is shown to user as progress-element on overlay. This is usually messages or images that means "Please wait...".<br>
+<p>The jQuery-Element that is returned by specified Function is shown to user as progress-element on overlay. This is usually messages or images that means "Please wait...".<br>
 If <code>false</code> is specified, nothing is shown on overlay.<br>
 The builtin element (default) is shown via CSS Animations in modern browsers (e.g. Firefox, Chrome, etc.), and it is shown via simple effect in legacy browsers (IE9, IE8, etc.).</p>
 
-<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#list'</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">({</span><span class="nx">progress</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;div&gt;I am busy...&lt;/div&gt;'</span><span class="p">)});</span>
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#list'</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">({
+  </span><span class="nx">progress</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;div&gt;I am busy...&lt;/div&gt;'</span><span class="p">); }
+});</span>
 </pre></div>
 
 <h2>
