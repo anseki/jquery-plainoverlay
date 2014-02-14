@@ -134,7 +134,9 @@ If `false` is specified, nothing is shown on overlay.
 The builtin element (default) is shown via CSS Animations in modern browsers (e.g. Firefox, Chrome, etc.), and it is shown via simple effect in legacy browsers (IE9, IE8, etc.).
 
 ```js
-$('#list').plainOverlay({progress: $('<div>I am busy...</div>')});
+$('#list').plainOverlay({
+  progress: function() { return $('<div>I am busy...</div>'); }
+});
 ```
 
 ## Note
