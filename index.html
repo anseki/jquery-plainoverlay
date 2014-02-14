@@ -72,10 +72,10 @@ The elements under overlay don't accept access via mouse or keyboard. And scroll
 var onSampleButton2;
 $('#sample-button2').click(function() {
   if (onSampleButton2) {
-    $('sample-frame iframe').plainOverlay('hide');
+    $('#sample-frame iframe').plainOverlay('hide');
     $(this).text('Show Sample');
   } else {
-    $('sample-frame iframe').plainOverlay('show');
+    $('#sample-frame iframe').plainOverlay('show');
     $(this).text('Hide Sample');
   }
   onSampleButton2 = !onSampleButton2;
