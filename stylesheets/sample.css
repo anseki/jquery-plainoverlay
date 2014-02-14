@@ -1,6 +1,7 @@
 
 .sample-window {
   width: 80%;
+  margin: 10px;
   padding: 5px;
   border: 2px solid #186db4;
   background-color: #e3cf9f;

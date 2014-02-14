@@ -214,6 +214,28 @@ Default: <code>'#000'</code></p>
 <div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#list'</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">({</span><span class="nx">color</span><span class="o">:</span> <span class="s1">'red'</span><span class="p">});</span>
 </pre></div>
 
+<!-- ======== sample -->
+<div class="sample-window" id="sample-window4">
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+<div class="sample-button" id="sample-button4">Show Sample</div>
+<script>
+var onSampleButton4;
+$('#sample-button4').click(function() {
+  if (onSampleButton4) {
+    $('#sample-window4').plainOverlay('hide');
+    $(this).text('Show Sample');
+  } else {
+    $('#sample-window4').plainOverlay('show', {color: 'red'});
+    $(this).text('Hide Sample');
+  }
+  onSampleButton4 = !onSampleButton4;
+});
+</script>
+<!-- ======== /sample -->
+
 <h3>
 <a name="opacity" class="anchor" href="#opacity"><span class="octicon octicon-link"></span></a><code>opacity</code>
 </h3>
@@ -241,6 +263,28 @@ The builtin element (default) is shown via CSS Animations in modern browsers (e.
   </span><span class="nx">progress</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;div&gt;I am busy...&lt;/div&gt;'</span><span class="p">); }
 });</span>
 </pre></div>
+
+<!-- ======== sample -->
+<div class="sample-window" id="sample-window5">
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+<div class="sample-button" id="sample-button5">Show Sample</div>
+<script>
+var onSampleButton5;
+$('#sample-button5').click(function() {
+  if (onSampleButton5) {
+    $('#sample-window5').plainOverlay('hide');
+    $(this).text('Show Sample');
+  } else {
+    $('#sample-window5').plainOverlay('show', {progress: function() { return $('<div style="font-size: 60px; color: #fff;">I am busy...</div>'); }});
+    $(this).text('Hide Sample');
+  }
+  onSampleButton5 = !onSampleButton5;
+});
+</script>
+<!-- ======== /sample -->
 
 <h2>
 <a name="note" class="anchor" href="#note"><span class="octicon octicon-link"></span></a>Note</h2>
