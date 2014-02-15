@@ -263,7 +263,7 @@ Overlay.prototype.show = function() {
   })(that.isBody ? that.jqWin : that.jqTarget);
   that.jqWin.resize(that.callAdjust);
   that.callAdjust();
-  this.isShown = true;
+  that.isShown = true;
 
   that.jqOverlay.stop().fadeTo(that.duration, that.opacity);
   if (that.jqProgress) {
@@ -324,34 +324,35 @@ Overlay.prototype.adjust = function() {
 
 Overlay.prototype.reset = function(forceHide) {
   // default: display of jqOverlay and jqProgress is kept
+  var that = this;
   if (forceHide) {
-    this.jqOverlay.css('display', 'none');
-    if (this.jqProgress) { this.jqProgress.css('display', 'none'); }
+    that.jqOverlay.css('display', 'none');
+    if (that.jqProgress) { that.jqProgress.css('display', 'none'); }
   }
-  if (!this.isShown) { return; }
-  this.jqTarget.css('position', this.orgPosition);
-  this.jqTarget.css('overflow', this.orgOverflow);
-  if (this.isBody) {
-    if (this.addMarginR) { this.jqTarget.css('marginRight', this.orgMarginR); }
-    if (this.addMarginB) { this.jqTarget.css('marginBottom', this.orgMarginB); }
+  if (!that.isShown) { return; }
+  that.jqTarget.css('position', that.orgPosition);
+  that.jqTarget.css('overflow', that.orgOverflow);
+  if (that.isBody) {
+    if (that.addMarginR) { that.jqTarget.css('marginRight', that.orgMarginR); }
+    if (that.addMarginB) { that.jqTarget.css('marginBottom', that.orgMarginB); }
   } else {
-    if (this.addMarginR) {
-      this.jqTarget.css('paddingRight', this.orgMarginR);
-      this.jqTarget.css('width', this.orgWidth);
+    if (that.addMarginR) {
+      that.jqTarget.css('paddingRight', that.orgMarginR);
+      that.jqTarget.css('width', that.orgWidth);
     }
-    if (this.addMarginB) {
-      this.jqTarget.css('paddingBottom', this.orgMarginB);
-      this.jqTarget.css('height', this.orgHeight);
+    if (that.addMarginB) {
+      that.jqTarget.css('paddingBottom', that.orgMarginB);
+      that.jqTarget.css('height', that.orgHeight);
     }
   }
-  this.jqTarget.off('focusin', this.avoidFocus);
-  if (this.jqActive && this.jqActive.length) { this.jqActive.focus(); } // Restore activeElement
+  that.jqTarget.off('focusin', that.avoidFocus);
+  if (that.jqActive && that.jqActive.length) { that.jqActive.focus(); } // Restore activeElement
   (function(jqView) {
-    jqView.off('scroll', this.avoidScroll);
-    jqView.scrollLeft(this.scrLeft).scrollTop(this.scrTop);
-  })(this.isBody ? this.jqWin : this.jqTarget);
-  this.jqWin.off('resize', this.callAdjust);
-  this.isShown = false;
+    jqView.off('scroll', that.avoidScroll);
+    jqView.scrollLeft(that.scrLeft).scrollTop(that.scrTop);
+  })(that.isBody ? that.jqWin : that.jqTarget);
+  that.jqWin.off('resize', that.callAdjust);
+  that.isShown = false;
 };
 
 function init(jq, options) {
