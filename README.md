@@ -145,5 +145,9 @@ $('#list').plainOverlay({
 - As everyone knows, IE8- has many problems. CSS `position:fixed` in HTML without `<!DOCTYPE>` is ignored.  
 If your web site supports IE8- and it use `position:fixed`, HTML must include `<!DOCTYPE>` even if plainOverlay is not used. And plainOverlay uses `position:fixed`.
 
+## See Also
+
+[jQuery.plainModal](http://anseki.github.io/jquery-plainmodal) may be better, if you want the overlay and dialog box (i.e. modal windows).
+
 ## Release History
  * 2014-02-14			v0.1.0			Initial release.

@@ -7,6 +7,7 @@
  */
 
 ;(function($, undefined) {
+'use strict';
 
 // builtin progress element
 var newProgress = (function() {
@@ -46,6 +47,8 @@ var newProgress = (function() {
     // Graceful Degradation
     if (typeof isLegacy !== 'boolean') {
       isLegacy = (function() { // similar to Modernizr
+        function is(obj, type) { return typeof obj === type; }
+        function contains(str, substr) { return !!~('' + str).indexOf(substr); }
         var res, feature,
           modElem = document.createElement('modernizr'),
           mStyle = modElem.style,
@@ -53,18 +56,15 @@ var newProgress = (function() {
           cssomPrefixes = omPrefixes.split(' '),
           tests = {},
           _hasOwnProperty = ({}).hasOwnProperty,
-          hasOwnProp = !is(_hasOwnProperty, 'undefined')
-              && !is(_hasOwnProperty.call, 'undefined') ?
+          hasOwnProp = !is(_hasOwnProperty, 'undefined') &&
+              !is(_hasOwnProperty.call, 'undefined') ?
             function (object, property) {
               return _hasOwnProperty.call(object, property);
             } :
             function (object, property) {
-              return ((property in object)
-                && is(object.constructor.prototype[property], 'undefined'));
+              return ((property in object) &&
+                is(object.constructor.prototype[property], 'undefined'));
             };
-
-        function is(obj, type) { return typeof obj === type; }
-        function contains(str, substr) { return !!~('' + str).indexOf(substr); }
 
         function testProps(props) {
           var i;
@@ -79,13 +79,13 @@ var newProgress = (function() {
           return testProps(props);
         }
 
-        tests['borderradius'] = function() {
+        tests.borderradius = function() {
           return testPropsAll('borderRadius');
         };
-        tests['cssanimations'] = function() {
+        tests.cssanimations = function() {
           return testPropsAll('animationName');
         };
-        tests['csstransforms'] = function() {
+        tests.csstransforms = function() {
           return !!testPropsAll('transform');
         };
 
