@@ -97,17 +97,17 @@ $default-animation-iteration-count: 1 !default;
 }
 
 @mixin keyframes($name) {
-  @if nth($animation-support, 1) {
-    @-moz-keyframes #{$name} { @content }
-  }
   @if nth($animation-support, 2) {
     @-webkit-keyframes #{$name} { @content }
   }
-  @if nth($animation-support, 3) {
-    @-o-keyframes #{$name} { @content }
+  @if nth($animation-support, 1) {
+    @-moz-keyframes #{$name} { @content }
   }
   @if nth($animation-support, 4) {
     @-ms-keyframes #{$name} { @content }
+  }
+  @if nth($animation-support, 3) {
+    @-o-keyframes #{$name} { @content }
   }
   @if nth($animation-support, 5) {
     @-khtml-keyframes #{$name} { @content }

@@ -11,8 +11,18 @@
 
 // builtin progress element
 var newProgress = (function() {
+  function experimental(props, supports, prefix, sep) { // similar to Compass
+    sep = typeof sep === 'undefined' ? ';' : '';
+    return $.map(props, function(prop) {
+      return $.map(supports, function(support) {
+        return (prefix || '') + support + prop;
+      }).join(sep);
+    }).join(sep);
+  }
+
   var isLegacy,
-    cssText = '.jQuery-plainOverlay-progress{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;width:100%;height:100%;border-top:3px solid #17f29b;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;border-radius:50%;-webkit-tap-highlight-color:rgba(0,0,0,0);transform:translateZ(0);box-shadow:0 0 1px rgba(0,0,0,0);-webkit-animation-name:jQuery-plainOverlay-spin;-moz-animation-name:jQuery-plainOverlay-spin;-ms-animation-name:jQuery-plainOverlay-spin;-o-animation-name:jQuery-plainOverlay-spin;animation-name:jQuery-plainOverlay-spin;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;-webkit-animation-timing-function:linear;-moz-animation-timing-function:linear;-ms-animation-timing-function:linear;-o-animation-timing-function:linear;animation-timing-function:linear;-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-ms-animation-iteration-count:infinite;-o-animation-iteration-count:infinite;animation-iteration-count:infinite}@-moz-keyframes jQuery-plainOverlay-spin{from{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes jQuery-plainOverlay-spin{from{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}}@-o-keyframes jQuery-plainOverlay-spin{from{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}}@-ms-keyframes jQuery-plainOverlay-spin{from{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes jQuery-plainOverlay-spin{from{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}}.jQuery-plainOverlay-progress-legacy{width:100%;height:50%;padding-top:25%;text-align:center;white-space:nowrap;*zoom:1}.jQuery-plainOverlay-progress-legacy:after,.jQuery-plainOverlay-progress-legacy:before{content:" ";display:table}.jQuery-plainOverlay-progress-legacy:after{clear:both}.jQuery-plainOverlay-progress-legacy div{width:18%;height:100%;margin:0 1%;background-color:#17f29b;float:left;visibility:hidden}.jQuery-plainOverlay-progress-1 div.jQuery-plainOverlay-progress-1,.jQuery-plainOverlay-progress-2 div.jQuery-plainOverlay-progress-1,.jQuery-plainOverlay-progress-2 div.jQuery-plainOverlay-progress-2,.jQuery-plainOverlay-progress-3 div.jQuery-plainOverlay-progress-1,.jQuery-plainOverlay-progress-3 div.jQuery-plainOverlay-progress-2,.jQuery-plainOverlay-progress-3 div.jQuery-plainOverlay-progress-3{visibility:visible}',
+    supports = ['-webkit-','-moz-','-ms-','-o-',''], prefix = 'jQuery-plainOverlay-progress',
+    cssText = '.'+prefix+'{'+experimental(['box-sizing:border-box'],['-webkit-','-moz-',''])+';width:100%;height:100%;border-top:3px solid #17f29b;'+experimental(['border-radius:50%'],supports)+';-webkit-tap-highlight-color:rgba(0,0,0,0);transform:translateZ(0);box-shadow:0 0 1px rgba(0,0,0,0);'+experimental(['animation-name:jQuery-plainOverlay-spin','animation-duration:1s','animation-timing-function:linear','animation-iteration-count:infinite'],supports)+'}'+experimental(['keyframes jQuery-plainOverlay-spin{from{'+experimental(['transform:rotate(0deg)'],supports)+'}to{'+experimental(['transform:rotate(360deg)'],supports)+'}}'],supports,'@','')+'.'+prefix+'-legacy{width:100%;height:50%;padding-top:25%;text-align:center;white-space:nowrap;*zoom:1}.'+prefix+'-legacy:after,.'+prefix+'-legacy:before{content:" ";display:table}.'+prefix+'-legacy:after{clear:both}.'+prefix+'-legacy div{width:18%;height:100%;margin:0 1%;background-color:#17f29b;float:left;visibility:hidden}.'+prefix+'-1 div.'+prefix+'-1,.'+prefix+'-2 div.'+prefix+'-1,.'+prefix+'-2 div.'+prefix+'-2,.'+prefix+'-3 div.'+prefix+'-1,.'+prefix+'-3 div.'+prefix+'-2,.'+prefix+'-3 div.'+prefix+'-3{visibility:visible}',
 
     adjustProgress = function() {
       var progressWH = Math.min(300, // max w/h
@@ -21,21 +31,20 @@ var newProgress = (function() {
           Math.min(this.jqTarget.innerWidth(), this.jqTarget.innerHeight())) * 0.9);
       this.jqProgress.width(progressWH).height(progressWH);
       if (!this.showProgress) { // CSS Animations
-        this.jqProgress.children('.jQuery-plainOverlay-progress').css('borderTopWidth',
+        this.jqProgress.children('.' + prefix).css('borderTopWidth',
           Math.max(3, progressWH / 30)); // min width
       }
     },
-
     showProgressLegacy = function(start) {
       var that = this;
       if (that.timer) { clearTimeout(that.timer); }
       if (that.progressCnt) {
-        that.jqProgress.removeClass('jQuery-plainOverlay-progress-' + that.progressCnt);
+        that.jqProgress.removeClass(prefix + '-' + that.progressCnt);
       }
       if (that.isShown) {
         that.progressCnt = !start && that.progressCnt < 3 ? that.progressCnt + 1 : 0;
         if (that.progressCnt) {
-          that.jqProgress.addClass('jQuery-plainOverlay-progress-' + that.progressCnt);
+          that.jqProgress.addClass(prefix + '-' + that.progressCnt);
         }
         that.timer = setTimeout(function() { that.showProgress(); }, 500);
       }
@@ -117,11 +126,11 @@ var newProgress = (function() {
     }
 
     if (isLegacy) {
-      jqProgress = $('<div><div class="jQuery-plainOverlay-progress-legacy">' +
-        '<div class="jQuery-plainOverlay-progress-3" /><div class="jQuery-plainOverlay-progress-2" /><div class="jQuery-plainOverlay-progress-1" /><div class="jQuery-plainOverlay-progress-2" /><div class="jQuery-plainOverlay-progress-3" /></div></div>');
+      jqProgress = $('<div><div class="' + prefix + '-legacy">' +
+        '<div class="' + prefix + '-3" /><div class="' + prefix + '-2" /><div class="' + prefix + '-1" /><div class="' + prefix + '-2" /><div class="' + prefix + '-3" /></div></div>');
       overlay.showProgress = showProgressLegacy;
     } else {
-      jqProgress = $('<div><div class="jQuery-plainOverlay-progress" /></div>');
+      jqProgress = $('<div><div class="' + prefix + '" /></div>');
     }
     overlay.adjustProgress = adjustProgress;
     return jqProgress;
