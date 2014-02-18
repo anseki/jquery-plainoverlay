@@ -12,7 +12,7 @@
 // builtin progress element
 var newProgress = (function() {
   function experimental(props, supports, prefix, sep) { // similar to Compass
-    sep = typeof sep === 'undefined' ? ';' : '';
+    sep = typeof sep === 'undefined' ? ';' : sep;
     return $.map(props, function(prop) {
       return $.map(supports, function(support) {
         return (prefix || '') + support + prop;
