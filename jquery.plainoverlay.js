@@ -176,7 +176,8 @@ function Overlay(jqTarget, options, curObject) {
       left:           0,
       top:            0,
       display:        'none',
-      zIndex:         9000
+      zIndex:         9000,
+      cursor:         'wait'
     }).appendTo(that.jqTarget)
   ).css('backgroundColor', options.color);
 
@@ -186,7 +187,8 @@ function Overlay(jqTarget, options, curObject) {
     that.jqProgress.css({
       position:       that.isBody ? 'fixed' : 'absolute',
       display:        'none',
-      zIndex:         9001
+      zIndex:         9001,
+      cursor:         'wait'
     }).appendTo(that.jqTarget);
   }
 
