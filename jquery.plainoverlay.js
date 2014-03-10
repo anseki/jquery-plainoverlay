@@ -176,10 +176,9 @@ function Overlay(jqTarget, options, curObject) {
       left:           0,
       top:            0,
       display:        'none',
-      zIndex:         9000,
       cursor:         'wait'
     }).appendTo(that.jqTarget)
-  ).css('backgroundColor', options.color);
+  ).css({backgroundColor: options.color, zIndex: options.zIndex});
 
   if (that.jqProgress = options.progress === false ? undefined :
       (typeof options.progress === 'function' ?
@@ -187,7 +186,7 @@ function Overlay(jqTarget, options, curObject) {
     that.jqProgress.css({
       position:       that.isBody ? 'fixed' : 'absolute',
       display:        'none',
-      zIndex:         9001,
+      zIndex:         options.zIndex + 1,
       cursor:         'wait'
     }).appendTo(that.jqTarget);
   }
@@ -305,15 +304,13 @@ Overlay.prototype.adjust = function() {
     }
   } else {
     if (this.addMarginR) {
-      this.jqTarget.css('paddingRight', this.orgMarginR);
-      this.jqTarget.css('width', this.orgWidth);
-      calW = this.jqTarget.width(); // original size
+      calW = this.jqTarget.css({paddingRight: this.orgMarginR, width: this.orgWidth})
+        .width(); // original size
       this.jqTarget.css('paddingRight', '+=' + this.addMarginR).width(calW - this.addMarginR);
     }
     if (this.addMarginB) {
-      this.jqTarget.css('paddingBottom', this.orgMarginB);
-      this.jqTarget.css('height', this.orgHeight);
-      calH = this.jqTarget.height(); // original size
+      calH = this.jqTarget.css({paddingBottom: this.orgMarginB, height: this.orgHeight})
+        .height(); // original size
       this.jqTarget.css('paddingBottom', '+=' + this.addMarginB).height(calH - this.addMarginB);
     }
 
@@ -341,26 +338,22 @@ Overlay.prototype.reset = function(forceHide) {
     if (that.jqProgress) { that.jqProgress.css('display', 'none'); }
   }
   if (!that.isShown) { return; }
-  that.jqTarget.css('position', that.orgPosition);
-  that.jqTarget.css('overflow', that.orgOverflow);
+  that.jqTarget.css({position: that.orgPosition, overflow: that.orgOverflow});
   if (that.isBody) {
     if (that.addMarginR) { that.jqTarget.css('marginRight', that.orgMarginR); }
     if (that.addMarginB) { that.jqTarget.css('marginBottom', that.orgMarginB); }
   } else {
     if (that.addMarginR) {
-      that.jqTarget.css('paddingRight', that.orgMarginR);
-      that.jqTarget.css('width', that.orgWidth);
+      that.jqTarget.css({paddingRight: that.orgMarginR, width: that.orgWidth});
     }
     if (that.addMarginB) {
-      that.jqTarget.css('paddingBottom', that.orgMarginB);
-      that.jqTarget.css('height', that.orgHeight);
+      that.jqTarget.css({paddingBottom: that.orgMarginB, height: that.orgHeight});
     }
   }
   that.jqTarget.off('focusin', that.avoidFocus);
   if (that.jqActive && that.jqActive.length) { that.jqActive.focus(); } // Restore activeElement
   (function(jqView) {
-    jqView.off('scroll', that.avoidScroll);
-    jqView.scrollLeft(that.scrLeft).scrollTop(that.scrTop);
+    jqView.off('scroll', that.avoidScroll).scrollLeft(that.scrLeft).scrollTop(that.scrTop);
   })(that.isBody ? that.jqWin : that.jqTarget);
   that.jqWin.off('resize', that.callAdjust);
   that.isShown = false;
@@ -370,7 +363,8 @@ function init(jq, options) {
   var opt = $.extend({
         duration:       200,
         color:          '#000',
-        opacity:        0.3
+        opacity:        0.3,
+        zIndex:         9000
         // progress
       }, options);
   return jq.each(function() {

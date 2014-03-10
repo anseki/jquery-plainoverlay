@@ -1,4 +1,4 @@
-# jQuery.plainOverlay
+# plainOverlay
 
 The simple jQuery Plugin for customizable overlay which covers a page, elements or iframe-windows that is specified. plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file (9KB minified).  
 **See <a href="http://anseki.github.io/jquery-plainoverlay">DEMO</a>**
@@ -139,6 +139,13 @@ $('#list').plainOverlay({
 });
 ```
 
+### `zIndex`
+
+Type: Number  
+Default: `9000`
+
+A `z-index` CSS property of overlay.
+
 ## Note
 
 - If target is `<iframe>` element, jQuery 1.10.3+ or 2.0.4+ must be used. (see [#14180: focusin/out special events don't work cross-window](http://bugs.jquery.com/ticket/14180))
@@ -147,7 +154,8 @@ If your web site supports IE8- and it use `position:fixed`, HTML must include `<
 
 ## See Also
 
-[jQuery.plainModal](http://anseki.github.io/jquery-plainmodal) may be better, if you want the overlay and dialog box (i.e. modal windows).
+[plainModal](http://anseki.github.io/jquery-plainmodal) may be better, if you want the overlay and dialog box (i.e. modal windows).
 
 ## Release History
+ * 2014-03-10			v0.2.0			Add `options.zIndex`
  * 2014-02-14			v0.1.0			Initial release.

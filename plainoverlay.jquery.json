@@ -1,6 +1,6 @@
 {
   "name": "plainoverlay",
-  "title": "jQuery.plainOverlay",
+  "title": "plainOverlay",
   "description": "The simple jQuery Plugin for customizable overlay which covers a page, elements or iframe-windows that is specified.",
   "keywords": [
     "overlay",
@@ -14,7 +14,7 @@
     "iframe",
     "window"
   ],
-  "version": "0.1.7",
+  "version": "0.2.0",
   "author": {
     "name": "anseki",
     "url": "https://github.com/anseki"
