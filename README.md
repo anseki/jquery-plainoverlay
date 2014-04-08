@@ -105,7 +105,7 @@ A number determining how long (milliseconds) the effect animation for showing an
 ### `color`
 
 Type: String  
-Default: `'#000'`
+Default: `'#888'`
 
 A fill-color of overlay.
 
@@ -116,12 +116,12 @@ $('#list').plainOverlay({color: 'red'});
 ### `opacity`
 
 Type: Number  
-Default: `0.3`
+Default: `0.6`
 
 A number in the range `0.0` (invisible) to `1.0` (solid).
 
 ```js
-$('#list').plainOverlay({opacity: 0.6});
+$('#list').plainOverlay({opacity: 0.3});
 ```
 
 ### `progress`
@@ -157,5 +157,6 @@ If your web site supports IE8- and it use `position:fixed`, HTML must include `<
 [plainModal](http://anseki.github.io/jquery-plainmodal) may be better, if you want the overlay and dialog box (i.e. modal windows).
 
 ## Release History
+ * 2014-04-08			v0.2.1			Thicken overlay as default. (color, opacity)
  * 2014-03-10			v0.2.0			Add `options.zIndex`
  * 2014-02-14			v0.1.0			Initial release.

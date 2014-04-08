@@ -147,7 +147,7 @@ function Overlay(jqTarget, options, curObject) {
   if ($.isWindow(elmTarget) || elmTarget.nodeType === 9) { // window or document -> body
     that.jqTarget = $('body');
   } else if (elmTarget.nodeName.toLowerCase() === 'iframe' ||
-      elmTarget.nodeName.toLowerCase() === 'frame') { // iframe/frame -> body of iframe
+      elmTarget.nodeName.toLowerCase() === 'frame') { // iframe or frame -> body of it
     // contentDocument not supported by IE
     that.jqWin = $(elmTarget.contentWindow);
     that.elmDoc = elmTarget.contentWindow.document;
@@ -362,8 +362,8 @@ Overlay.prototype.reset = function(forceHide) {
 function init(jq, options) {
   var opt = $.extend({
         duration:       200,
-        color:          '#000',
-        opacity:        0.3,
+        color:          '#888',
+        opacity:        0.6,
         zIndex:         9000
         // progress
       }, options);
