@@ -35,31 +35,60 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
 
+<div class="cols">
+<div class="col">
 <!-- ======== sample -->
-<div id="sample-style">
+<div class="sample-style" id="sample-style1">
 <p class="sample-head">jQuery.plainOverlay</p>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 </div>
 <!-- ======== /sample -->
-
-<p>The simple jQuery Plugin for customizable overlay which covers a page, elements or iframe-windows that is specified. plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file (9KB minified).</p>
-
 <!-- ======== sample -->
 <div class="sample-button" id="sample-button1">Show Sample</div>
 <script>
 var onSampleButton1;
 $('#sample-button1').click(function() {
   if (onSampleButton1) {
-    $('#sample-style').plainOverlay('hide');
+    $('#sample-style1').plainOverlay('hide');
     $(this).text('Show Sample');
   } else {
-    $('#sample-style').plainOverlay('show');
+    $('#sample-style1').plainOverlay('show');
     $(this).text('Hide Sample');
   }
   onSampleButton1 = !onSampleButton1;
 }).click();
 </script>
 <!-- ======== /sample -->
+</div>
+<div class="col">
+<!-- ======== sample -->
+<div class="sample-style" id="sample-style2">
+<p class="sample-head">jQuery.plainOverlay</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+<!-- ======== /sample -->
+<!-- ======== sample -->
+<div class="sample-button" id="sample-button2">Show Sample</div>
+<div>SVG Animations via <code><a href="#progress">progress</a></code>.</a></div>
+<script>
+var onSampleButton2;
+$('#sample-style2').plainOverlay({progress: function() { return $('<div id="progress2"><img src="images/loading-bars.svg" alt=""></div>'); }});
+$('#sample-button2').click(function() {
+  if (onSampleButton2) {
+    $('#sample-style2').plainOverlay('hide');
+    $(this).text('Show Sample');
+  } else {
+    $('#sample-style2').plainOverlay('show');
+    $(this).text('Hide Sample');
+  }
+  onSampleButton2 = !onSampleButton2;
+}).click();
+</script>
+<!-- ======== /sample -->
+</div>
+</div>
+
+<p>The simple jQuery Plugin for customizable overlay which covers a page, elements or iframe-windows that is specified. plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file (9KB minified).</p>
 
 <p>This is used for making users wait until the your application is ready.<br>
 The elements under overlay don't accept access via mouse or keyboard. And scrollable element (e.g. <code>&lt;body&gt;</code>, <code>&lt;div style="overflow:scroll"&gt;</code> or <code>&lt;iframe&gt;</code>) which is specified can't scroll.</p>
@@ -67,27 +96,27 @@ The elements under overlay don't accept access via mouse or keyboard. And scroll
 <!-- ======== sample -->
 <div id="sample-frame"><iframe src="iframe.html"></iframe></div>
 <p style="font-size: 22px; font-weight: bold;"><code>&lt;iframe&gt;</code></p>
-<div class="sample-button" id="sample-button2">Show Sample</div>
+<div class="sample-button" id="sample-button3">Show Sample</div>
 <script>
-var onSampleButton2;
-$('#sample-button2').click(function() {
-  if (onSampleButton2) {
+var onSampleButton3;
+$('#sample-button3').click(function() {
+  if (onSampleButton3) {
     $('#sample-frame iframe').plainOverlay('hide');
     $(this).text('Show Sample');
   } else {
     $('#sample-frame iframe').plainOverlay('show');
     $(this).text('Hide Sample');
   }
-  onSampleButton2 = !onSampleButton2;
+  onSampleButton3 = !onSampleButton3;
 });
 </script>
 <!-- ======== /sample -->
 
 <!-- ======== sample -->
 <p style="font-size: 22px; font-weight: bold;"><code>&lt;body&gt;</code></p>
-<div class="sample-button" id="sample-button3">Show Sample</div>
+<div class="sample-button" id="sample-button4">Show Sample</div>
 <script>
-$('#sample-button3').click(function() {
+$('#sample-button4').click(function() {
   var count = 5, progress = $('<div style="font-size: 300px; color: #fff;">5</div>');
   $('body').plainOverlay('show', {progress: function() { return progress; }});
   setTimeout(function() { $('body').plainOverlay('hide'); }, 5000);
@@ -207,7 +236,7 @@ Default: <code>200</code></p>
 </h3>
 
 <p>Type: String<br>
-Default: <code>'#000'</code></p>
+Default: <code>'#888'</code></p>
 
 <p>A fill-color of overlay.</p>
 
@@ -215,7 +244,7 @@ Default: <code>'#000'</code></p>
 </pre></div>
 
 <!-- ======== sample -->
-<div class="sample-window" id="sample-window4" style="height: 200px; overflow: auto;">
+<div class="sample-window" id="sample-window5" style="height: 200px; overflow: auto;">
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -223,18 +252,18 @@ Default: <code>'#000'</code></p>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 </div>
-<div class="sample-button" id="sample-button4">Show Sample</div>
+<div class="sample-button" id="sample-button5">Show Sample</div>
 <script>
-var onSampleButton4;
-$('#sample-button4').click(function() {
-  if (onSampleButton4) {
-    $('#sample-window4').plainOverlay('hide');
+var onSampleButton5;
+$('#sample-button5').click(function() {
+  if (onSampleButton5) {
+    $('#sample-window5').plainOverlay('hide');
     $(this).text('Show Sample');
   } else {
-    $('#sample-window4').plainOverlay('show', {color: 'red'});
+    $('#sample-window5').plainOverlay('show', {color: 'red'});
     $(this).text('Hide Sample');
   }
-  onSampleButton4 = !onSampleButton4;
+  onSampleButton5 = !onSampleButton5;
 });
 </script>
 <!-- ======== /sample -->
@@ -244,11 +273,11 @@ $('#sample-button4').click(function() {
 </h3>
 
 <p>Type: Number<br>
-Default: <code>0.3</code></p>
+Default: <code>0.6</code></p>
 
 <p>A number in the range <code>0.0</code> (invisible) to <code>1.0</code> (solid).</p>
 
-<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#list'</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">({</span><span class="nx">opacity</span><span class="o">:</span> <span class="mf">0.6</span><span class="p">});</span>
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#list'</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">({</span><span class="nx">opacity</span><span class="o">:</span> <span class="mf">0.3</span><span class="p">});</span>
 </pre></div>
 
 <h3>
@@ -268,23 +297,34 @@ The builtin element (default) is shown via CSS Animations in modern browsers (e.
 </pre></div>
 
 <!-- ======== sample -->
-<div class="sample-window" id="sample-window5">
+<div class="sample-window" id="sample-window6">
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 </div>
-<div class="sample-button" id="sample-button5">Show Sample</div>
+<div class="sample-button" id="sample-button6">Show Sample</div>
 <script>
-var onSampleButton5;
-$('#sample-button5').click(function() {
-  if (onSampleButton5) {
-    $('#sample-window5').plainOverlay('hide');
+var onSampleButton6;
+$('#sample-button6').click(function() {
+  if (onSampleButton6) {
+    $('#sample-window6').plainOverlay('hide');
     $(this).text('Show Sample');
   } else {
-    $('#sample-window5').plainOverlay('show', {progress: function() { return $('<div style="font-size: 60px; color: #fff;">I am busy...</div>'); }});
+    $('#sample-window6').plainOverlay('show', {progress: function() { return $('<div style="font-size: 60px; color: #fff;">I am busy...</div>'); }});
     $(this).text('Hide Sample');
   }
-  onSampleButton5 = !onSampleButton5;
+  onSampleButton6 = !onSampleButton6;
+});
+</script>
+<!-- ======== /sample -->
+
+<p>SVG Animations (e.g. <a href="https://github.com/jxnblk/loading">jxnblk/loading</a>)</p>
+<!-- ======== sample -->
+<div class="sample-button" id="sample-button7">Show Sample (5sec.)</div>
+<script>
+$('#sample-button7').click(function() {
+  $('body').plainOverlay('show', {progress: function() { return $('<div id="progress7"><img src="images/loading-spinning-bubbles.svg" alt=""></div>'); }});
+  setTimeout(function() { $('body').plainOverlay('hide'); }, 5000);
 });
 </script>
 <!-- ======== /sample -->
