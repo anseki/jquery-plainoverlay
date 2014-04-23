@@ -9,133 +9,135 @@
 ;(function($, undefined) {
 'use strict';
 
-// builtin progress element
-var newProgress = (function() {
-  function experimental(props, supports, prefix, sep) { // similar to Compass
-    sep = typeof sep === 'undefined' ? ';' : sep;
-    return $.map(props, function(prop) {
-      return $.map(supports, function(support) {
-        return (prefix || '') + support + prop;
+var APP_NAME = 'plainOverlay',
+
+  // builtin progress element
+  newProgress = (function() {
+    function experimental(props, supports, prefix, sep) { // similar to Compass
+      sep = typeof sep === 'undefined' ? ';' : sep;
+      return $.map(props, function(prop) {
+        return $.map(supports, function(support) {
+          return (prefix || '') + support + prop;
+        }).join(sep);
       }).join(sep);
-    }).join(sep);
-  }
+    }
 
-  var isLegacy,
-    supports = ['-webkit-','-moz-','-ms-','-o-',''], prefix = 'jQuery-plainOverlay-progress',
-    cssText = '.'+prefix+'{'+experimental(['box-sizing:border-box'],['-webkit-','-moz-',''])+';width:100%;height:100%;border-top:3px solid #17f29b;'+experimental(['border-radius:50%'],supports)+';-webkit-tap-highlight-color:rgba(0,0,0,0);transform:translateZ(0);box-shadow:0 0 1px rgba(0,0,0,0);'+experimental(['animation-name:jQuery-plainOverlay-spin','animation-duration:1s','animation-timing-function:linear','animation-iteration-count:infinite'],supports)+'}'+experimental(['keyframes jQuery-plainOverlay-spin{from{'+experimental(['transform:rotate(0deg)'],supports)+'}to{'+experimental(['transform:rotate(360deg)'],supports)+'}}'],supports,'@','')+'.'+prefix+'-legacy{width:100%;height:50%;padding-top:25%;text-align:center;white-space:nowrap;*zoom:1}.'+prefix+'-legacy:after,.'+prefix+'-legacy:before{content:" ";display:table}.'+prefix+'-legacy:after{clear:both}.'+prefix+'-legacy div{width:18%;height:100%;margin:0 1%;background-color:#17f29b;float:left;visibility:hidden}.'+prefix+'-1 div.'+prefix+'-1,.'+prefix+'-2 div.'+prefix+'-1,.'+prefix+'-2 div.'+prefix+'-2,.'+prefix+'-3 div.'+prefix+'-1,.'+prefix+'-3 div.'+prefix+'-2,.'+prefix+'-3 div.'+prefix+'-3{visibility:visible}',
+    var isLegacy, domId = 'jQuery-' + APP_NAME,
+      supports = ['-webkit-','-moz-','-ms-','-o-',''], prefix = domId + '-progress',
+      cssText = '.'+prefix+'{'+experimental(['box-sizing:border-box'],['-webkit-','-moz-',''])+';width:100%;height:100%;border-top:3px solid #17f29b;'+experimental(['border-radius:50%'],supports)+';-webkit-tap-highlight-color:rgba(0,0,0,0);transform:translateZ(0);box-shadow:0 0 1px rgba(0,0,0,0);'+experimental(['animation-name:'+domId+'-spin','animation-duration:1s','animation-timing-function:linear','animation-iteration-count:infinite'],supports)+'}'+experimental(['keyframes '+domId+'-spin{from{'+experimental(['transform:rotate(0deg)'],supports)+'}to{'+experimental(['transform:rotate(360deg)'],supports)+'}}'],supports,'@','')+'.'+prefix+'-legacy{width:100%;height:50%;padding-top:25%;text-align:center;white-space:nowrap;*zoom:1}.'+prefix+'-legacy:after,.'+prefix+'-legacy:before{content:" ";display:table}.'+prefix+'-legacy:after{clear:both}.'+prefix+'-legacy div{width:18%;height:100%;margin:0 1%;background-color:#17f29b;float:left;visibility:hidden}.'+prefix+'-1 div.'+prefix+'-1,.'+prefix+'-2 div.'+prefix+'-1,.'+prefix+'-2 div.'+prefix+'-2,.'+prefix+'-3 div.'+prefix+'-1,.'+prefix+'-3 div.'+prefix+'-2,.'+prefix+'-3 div.'+prefix+'-3{visibility:visible}',
 
-    adjustProgress = function() {
-      var progressWH = Math.min(300, // max w/h
-        (this.isBody ?
-          Math.min(this.jqWin.width(), this.jqWin.height()) :
-          Math.min(this.jqTarget.innerWidth(), this.jqTarget.innerHeight())) * 0.9);
-      this.jqProgress.width(progressWH).height(progressWH);
-      if (!this.showProgress) { // CSS Animations
-        this.jqProgress.children('.' + prefix).css('borderTopWidth',
-          Math.max(3, progressWH / 30)); // min width
-      }
-    },
-    showProgressLegacy = function(start) {
-      var that = this;
-      if (that.timer) { clearTimeout(that.timer); }
-      if (that.progressCnt) {
-        that.jqProgress.removeClass(prefix + '-' + that.progressCnt);
-      }
-      if (that.isShown) {
-        that.progressCnt = !start && that.progressCnt < 3 ? that.progressCnt + 1 : 0;
+      adjustProgress = function() {
+        var progressWH = Math.min(300, // max w/h
+          (this.isBody ?
+            Math.min(this.jqWin.width(), this.jqWin.height()) :
+            Math.min(this.jqTarget.innerWidth(), this.jqTarget.innerHeight())) * 0.9);
+        this.jqProgress.width(progressWH).height(progressWH);
+        if (!this.showProgress) { // CSS Animations
+          this.jqProgress.children('.' + prefix).css('borderTopWidth',
+            Math.max(3, progressWH / 30)); // min width
+        }
+      },
+      showProgressLegacy = function(start) {
+        var that = this;
+        if (that.timer) { clearTimeout(that.timer); }
         if (that.progressCnt) {
-          that.jqProgress.addClass(prefix + '-' + that.progressCnt);
+          that.jqProgress.removeClass(prefix + '-' + that.progressCnt);
         }
-        that.timer = setTimeout(function() { that.showProgress(); }, 500);
+        if (that.isShown) {
+          that.progressCnt = !start && that.progressCnt < 3 ? that.progressCnt + 1 : 0;
+          if (that.progressCnt) {
+            that.jqProgress.addClass(prefix + '-' + that.progressCnt);
+          }
+          that.timer = setTimeout(function() { that.showProgress(); }, 500);
+        }
+      };
+
+    return function(overlay) {
+      var jqProgress, sheet;
+
+      // Graceful Degradation
+      if (typeof isLegacy !== 'boolean') {
+        isLegacy = (function() { // similar to Modernizr
+          function is(obj, type) { return typeof obj === type; }
+          function contains(str, substr) { return !!~('' + str).indexOf(substr); }
+          var res, feature,
+            modElem = document.createElement('modernizr'),
+            mStyle = modElem.style,
+            omPrefixes = 'Webkit Moz O ms',
+            cssomPrefixes = omPrefixes.split(' '),
+            tests = {},
+            _hasOwnProperty = ({}).hasOwnProperty,
+            hasOwnProp = !is(_hasOwnProperty, 'undefined') &&
+                !is(_hasOwnProperty.call, 'undefined') ?
+              function (object, property) {
+                return _hasOwnProperty.call(object, property);
+              } :
+              function (object, property) {
+                return ((property in object) &&
+                  is(object.constructor.prototype[property], 'undefined'));
+              };
+
+          function testProps(props) {
+            var i;
+            for (i in props) {
+              if (!contains(props[i], '-') && mStyle[props[i]] !== undefined) { return true; }
+            }
+            return false;
+          }
+          function testPropsAll(prop) {
+            var ucProp  = prop.charAt(0).toUpperCase() + prop.slice(1),
+                props   = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
+            return testProps(props);
+          }
+
+          tests.borderradius = function() {
+            return testPropsAll('borderRadius');
+          };
+          tests.cssanimations = function() {
+            return testPropsAll('animationName');
+          };
+          tests.csstransforms = function() {
+            return !!testPropsAll('transform');
+          };
+
+          res = false;
+          for (feature in tests) {
+            if (hasOwnProp(tests, feature) && !tests[feature]()) {
+              res = true;
+              break;
+            }
+          }
+          mStyle.cssText = '';
+          modElem = null;
+          return res;
+        })();
       }
-    };
 
-  return function(overlay) {
-    var jqProgress, sheet;
-
-    // Graceful Degradation
-    if (typeof isLegacy !== 'boolean') {
-      isLegacy = (function() { // similar to Modernizr
-        function is(obj, type) { return typeof obj === type; }
-        function contains(str, substr) { return !!~('' + str).indexOf(substr); }
-        var res, feature,
-          modElem = document.createElement('modernizr'),
-          mStyle = modElem.style,
-          omPrefixes = 'Webkit Moz O ms',
-          cssomPrefixes = omPrefixes.split(' '),
-          tests = {},
-          _hasOwnProperty = ({}).hasOwnProperty,
-          hasOwnProp = !is(_hasOwnProperty, 'undefined') &&
-              !is(_hasOwnProperty.call, 'undefined') ?
-            function (object, property) {
-              return _hasOwnProperty.call(object, property);
-            } :
-            function (object, property) {
-              return ((property in object) &&
-                is(object.constructor.prototype[property], 'undefined'));
-            };
-
-        function testProps(props) {
-          var i;
-          for (i in props) {
-            if (!contains(props[i], '-') && mStyle[props[i]] !== undefined) { return true; }
-          }
-          return false;
+      if (!overlay.elmDoc.getElementById(domId)) { // Add style rules
+        if (overlay.elmDoc.createStyleSheet) { // IE
+          sheet = overlay.elmDoc.createStyleSheet();
+          sheet.owningElement.id = domId;
+          sheet.cssText = cssText;
+        } else {
+          sheet = (overlay.elmDoc.getElementsByTagName('head')[0] || overlay.elmDoc.documentElement)
+            .appendChild(overlay.elmDoc.createElement('style'));
+          sheet.type = 'text/css';
+          sheet.id = domId;
+          sheet.textContent = cssText;
         }
-        function testPropsAll(prop) {
-          var ucProp  = prop.charAt(0).toUpperCase() + prop.slice(1),
-              props   = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
-          return testProps(props);
-        }
+      }
 
-        tests.borderradius = function() {
-          return testPropsAll('borderRadius');
-        };
-        tests.cssanimations = function() {
-          return testPropsAll('animationName');
-        };
-        tests.csstransforms = function() {
-          return !!testPropsAll('transform');
-        };
-
-        res = false;
-        for (feature in tests) {
-          if (hasOwnProp(tests, feature) && !tests[feature]()) {
-            res = true;
-            break;
-          }
-        }
-        mStyle.cssText = '';
-        modElem = null;
-        return res;
-      })();
-    }
-
-    if (!overlay.elmDoc.getElementById('jQuery-plainOverlay')) { // Add style rules
-      if (overlay.elmDoc.createStyleSheet) { // IE
-        sheet = overlay.elmDoc.createStyleSheet();
-        sheet.owningElement.id = 'jQuery-plainOverlay';
-        sheet.cssText = cssText;
+      if (isLegacy) {
+        jqProgress = $('<div><div class="' + prefix + '-legacy">' +
+          '<div class="' + prefix + '-3" /><div class="' + prefix + '-2" /><div class="' + prefix + '-1" /><div class="' + prefix + '-2" /><div class="' + prefix + '-3" /></div></div>');
+        overlay.showProgress = showProgressLegacy;
       } else {
-        sheet = (overlay.elmDoc.getElementsByTagName('head')[0] || overlay.elmDoc.documentElement)
-          .appendChild(overlay.elmDoc.createElement('style'));
-        sheet.type = 'text/css';
-        sheet.id = 'jQuery-plainOverlay';
-        sheet.textContent = cssText;
+        jqProgress = $('<div><div class="' + prefix + '" /></div>');
       }
-    }
-
-    if (isLegacy) {
-      jqProgress = $('<div><div class="' + prefix + '-legacy">' +
-        '<div class="' + prefix + '-3" /><div class="' + prefix + '-2" /><div class="' + prefix + '-1" /><div class="' + prefix + '-2" /><div class="' + prefix + '-3" /></div></div>');
-      overlay.showProgress = showProgressLegacy;
-    } else {
-      jqProgress = $('<div><div class="' + prefix + '" /></div>');
-    }
-    overlay.adjustProgress = adjustProgress;
-    return jqProgress;
-  };
-})();
+      overlay.adjustProgress = adjustProgress;
+      return jqProgress;
+    };
+  })();
 
 function Overlay(jqTarget, options, curObject) {
   var that = this, elmTarget = jqTarget.get(0);
@@ -143,6 +145,7 @@ function Overlay(jqTarget, options, curObject) {
   that.opacity = options.opacity;
   that.isShown = false;
 
+  that.jqTargetOrg = jqTarget;
   // that.jqWin = that.jqTarget.ownerDocument.defaultView; // Not supported by IE
   if ($.isWindow(elmTarget) || elmTarget.nodeType === 9) { // window or document -> body
     that.jqTarget = $('body');
@@ -275,7 +278,8 @@ Overlay.prototype.show = function() {
   that.callAdjust();
   that.isShown = true;
 
-  that.jqOverlay.stop().fadeTo(that.duration, that.opacity);
+  that.jqOverlay.stop().fadeTo(that.duration, that.opacity,
+    function() { that.jqTargetOrg.trigger('plainoverlayshow'); });
   if (that.jqProgress) {
     if (that.showProgress) { that.showProgress(true); }
     that.jqProgress.fadeIn(that.duration);
@@ -285,7 +289,8 @@ Overlay.prototype.show = function() {
 Overlay.prototype.hide = function() {
   var that = this;
   if (!that.isShown) { return; }
-  that.jqOverlay.stop().fadeOut(that.duration, function() { that.reset(); });
+  that.jqOverlay.stop().fadeOut(that.duration,
+    function() { that.reset(); that.jqTargetOrg.trigger('plainoverlayhide'); });
   if (that.jqProgress) { that.jqProgress.fadeOut(that.duration); }
 };
 
@@ -365,19 +370,25 @@ function init(jq, options) {
         color:          '#888',
         opacity:        0.6,
         zIndex:         9000
-        // progress
+        // Optional: progress, show, hide
       }, options);
   return jq.each(function() {
     var that = $(this);
-    that.data('plainOverlay', new Overlay(that, opt, that.data('plainOverlay')));
+    that.data(APP_NAME, new Overlay(that, opt, that.data(APP_NAME)));
+    if (typeof opt.show === 'function') {
+      that.on('plainoverlayshow', opt.show);
+    }
+    if (typeof opt.hide === 'function') {
+      that.on('plainoverlayhide', opt.hide);
+    }
   });
 }
 
 function overlayShow(jq, options) {
   return jq.each(function() {
     var that = $(this), overlay;
-    if (options || !(overlay = that.data('plainOverlay'))) {
-      overlay = init(that, options).data('plainOverlay');
+    if (options || !(overlay = that.data(APP_NAME))) {
+      overlay = init(that, options).data(APP_NAME);
     }
     overlay.show();
   });
@@ -385,12 +396,12 @@ function overlayShow(jq, options) {
 
 function overlayHide(jq) {
   return jq.each(function() {
-    var overlay = $(this).data('plainOverlay');
+    var overlay = $(this).data(APP_NAME);
     if (overlay) { overlay.hide(); }
   });
 }
 
-$.fn.plainOverlay = function(action, options) {
+$.fn[APP_NAME] = function(action, options) {
   return (
     action === 'show' ?   overlayShow(this, options) :
     action === 'hide' ?   overlayHide(this) :
