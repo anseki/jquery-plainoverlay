@@ -45,6 +45,7 @@
 <!-- ======== /sample -->
 <!-- ======== sample -->
 <div class="sample-button" id="sample-button1">Show Sample</div>
+<div style="text-align: center;">CSS Animations (or JavaScript)</div>
 <script>
 var onSampleButton1;
 $('#sample-button1').click(function() {
@@ -69,7 +70,7 @@ $('#sample-button1').click(function() {
 <!-- ======== /sample -->
 <!-- ======== sample -->
 <div class="sample-button" id="sample-button2">Show Sample</div>
-<div>SVG Animations via <code><a href="#progress">progress</a></code>.</a></div>
+<div style="text-align: center;">SVG Animations via <code><a href="#progress">progress</a></code></a></div>
 <script>
 var onSampleButton2;
 $('#sample-style2').plainOverlay({progress: function() { return $('<div id="progress2"><img src="images/loading-bars.svg" alt=""></div>'); }});
@@ -91,7 +92,7 @@ $('#sample-button2').click(function() {
 <p>The simple jQuery Plugin for customizable overlay which covers a page, elements or iframe-windows that is specified. plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file (9KB minified).</p>
 
 <p>This is used for making users wait until the your application is ready.<br>
-The elements under overlay don't accept access via mouse or keyboard. And scrollable element (e.g. <code>&lt;body&gt;</code>, <code>&lt;div style="overflow:scroll"&gt;</code> or <code>&lt;iframe&gt;</code>) which is specified can't scroll.</p>
+The elements under the overlay don't accept access via mouse or keyboard. And scrollable element (e.g. <code>&lt;body&gt;</code>, <code>&lt;div style="overflow:scroll"&gt;</code> or <code>&lt;iframe&gt;</code>) which is specified can't scroll.</p>
 
 <!-- ======== sample -->
 <div id="sample-frame"><iframe src="iframe.html"></iframe></div>
@@ -134,8 +135,8 @@ $('#sample-button4').click(function() {
 <p>plainOverlay do:</p>
 
 <ul>
-<li>Covering a page, elements or iframe-windows that is specified with overlay.</li>
-<li>Avoiding focusing elements under overlay. (by pressing Tab key)</li>
+<li>Covering a page, elements or iframe-windows that is specified with the overlay.</li>
+<li>Avoiding focusing elements under the overlay. (by pressing Tab key)</li>
 <li>Avoiding scrolling a page, elements or iframe-windows that is specified.</li>
 </ul><div class="highlight highlight-js"><pre><span class="c1">// Cover an element with overlay.</span>
 <span class="nx">$</span><span class="p">(</span><span class="s1">'#post-form'</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">'show'</span><span class="p">);</span>
@@ -165,8 +166,8 @@ $('#sample-button4').click(function() {
 <div class="highlight highlight-js"><pre><span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">'show'</span><span class="p">[,</span> <span class="nx">options</span><span class="p">])</span>
 </pre></div>
 
-<p>Cover specified element with overlay. This element may be <code>&lt;body&gt;</code>, <code>&lt;iframe&gt;</code> or box-element like <code>&lt;div&gt;</code>. <code>$(document)</code> and <code>$(window)</code> are same as <code>$('body')</code>.<br>
-If <code>options</code> (see <a href="#options">Options</a>) is specified, element is initialized with specified <code>options</code> before overlay is shown. If element is not initialized yet, element is initialized even if <code>options</code> is not specified.<br>
+<p>Cover specified element with the overlay. This element may be <code>&lt;body&gt;</code>, <code>&lt;iframe&gt;</code> or box-element like <code>&lt;div&gt;</code>. <code>$(document)</code> and <code>$(window)</code> are same as <code>$('body')</code>.<br>
+If <code>options</code> (see <a href="#options">Options</a>) is specified, element is initialized with specified <code>options</code> before the overlay is shown. If element is not initialized yet, element is initialized even if <code>options</code> is not specified.<br>
 A element can be initialized by new <code>options</code> any number of times.</p>
 
 <h3>
@@ -176,7 +177,7 @@ A element can be initialized by new <code>options</code> any number of times.</p
 <div class="highlight highlight-js"><pre><span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">)</span>
 </pre></div>
 
-<p>Hide overlay.</p>
+<p>Hide the overlay.</p>
 
 <h3>
 <a name="initialize" class="anchor" href="#initialize"><span class="octicon octicon-link"></span></a><a name="initialize">Initialize</a>
@@ -185,8 +186,8 @@ A element can be initialized by new <code>options</code> any number of times.</p
 <div class="highlight highlight-js"><pre><span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">([</span><span class="nx">options</span><span class="p">])</span>
 </pre></div>
 
-<p>Initialize specified element. (preparation overlay)<br>
-The <a href="#show">Show</a> method can initialize too. This is used to initialize without showing overlay at voluntary time.<br>
+<p>Initialize specified element. (preparation the overlay)<br>
+The <a href="#show">Show</a> method can initialize too. This is used to initialize without showing the overlay at voluntary time.<br>
 You can specify <code>options</code> to every <a href="#show">Show</a> method. But, if <code>options</code> of a element isn't changed, re-initializing it isn't needed. Then, you specify <code>options</code> to only first <a href="#show">Show</a> method, or use this method for initializing it only once.<br>
 If you don't customize <a href="#options">Options</a> (using default all), this method isn't needed because <code>options</code> isn't specified to <a href="#show">Show</a> method, and element is initialized at only first time.</p>
 
@@ -229,7 +230,7 @@ If you don't customize <a href="#options">Options</a> (using default all), this 
 <p>Type: Number<br>
 Default: <code>200</code></p>
 
-<p>A number determining how long (milliseconds) the effect animation for showing and hiding overlay will run.</p>
+<p>A number determining how long (milliseconds) the effect animation for showing and hiding the overlay will run.</p>
 
 <h3>
 <a name="color" class="anchor" href="#color"><span class="octicon octicon-link"></span></a><code>color</code>
@@ -238,7 +239,7 @@ Default: <code>200</code></p>
 <p>Type: String<br>
 Default: <code>'#888'</code></p>
 
-<p>A fill-color of overlay.</p>
+<p>A fill-color of the overlay.</p>
 
 <div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#list'</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">({</span><span class="nx">color</span><span class="o">:</span> <span class="s1">'red'</span><span class="p">});</span>
 </pre></div>
@@ -287,13 +288,13 @@ Default: <code>0.6</code></p>
 <p>Type: Function or Boolean<br>
 Default: Builtin Element</p>
 
-<p>The jQuery-Element that is returned by specified Function is shown to user as progress-element on overlay. This is usually messages or images that means "Please wait...".<br>
-If <code>false</code> is specified, nothing is shown on overlay.<br>
-The builtin element (default) is shown via CSS Animations in modern browsers (e.g. Firefox, Chrome, etc.), and it is shown via simple effect in legacy browsers (IE9, IE8, etc.).</p>
+<p>The jQuery-Element that is returned by specified Function is shown to user as progress-element on the overlay. This is usually messages or images that means "Please wait...".<br>
+If <code>false</code> is specified, nothing is shown on the overlay.</p>
+<p>The builtin element (default) is shown via CSS Animations in modern browsers (e.g. Firefox, Chrome, etc.), and it is shown via simple effect in legacy browsers (IE9, IE8, etc.). This choice is automatic.</p>
 
-<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#list'</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">({
-  </span><span class="nx">progress</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;div&gt;I am busy...&lt;/div&gt;'</span><span class="p">); }
-});</span>
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#list'</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">({</span>
+  <span class="nx">progress</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;div&gt;I am busy...&lt;/div&gt;'</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">});</span>
 </pre></div>
 
 <!-- ======== sample -->
@@ -318,7 +319,8 @@ $('#sample-button6').click(function() {
 </script>
 <!-- ======== /sample -->
 
-<p>SVG Animations (e.g. <a href="https://github.com/jxnblk/loading">jxnblk/loading</a>)</p>
+<p>Of course your image files, some CSS codes which are distributed free in the internet, or any elements can be used.<br>
+e.g. This sample is SVG Animations <a href="https://github.com/jxnblk/loading">jxnblk/loading</a>.</p>
 <!-- ======== sample -->
 <div class="sample-button" id="sample-button7">Show Sample (5sec.)</div>
 <script>
@@ -336,7 +338,59 @@ $('#sample-button7').click(function() {
 <p>Type: Number<br>
 Default: <code>9000</code></p>
 
-<p>A <code>z-index</code> CSS property of overlay.</p>
+<p>A <code>z-index</code> CSS property of the overlay.</p>
+
+<h3>
+<a name="show-1" class="anchor" href="#show-1"><span class="octicon octicon-link"></span></a><code>show</code>
+</h3>
+
+<p>Type: Function<br>
+Default: <code>undefined</code></p>
+
+<p>A <code>plainoverlayshow</code> event handler. (see <a href="#events">Events</a>)</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#form1'</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">({</span><span class="nx">show</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span> <span class="p">}</span> <span class="p">});</span>
+</pre></div>
+
+<h3>
+<a name="hide-1" class="anchor" href="#hide-1"><span class="octicon octicon-link"></span></a><code>hide</code>
+</h3>
+
+<p>Type: Function<br>
+Default: <code>undefined</code></p>
+
+<p>A <code>plainoverlayhide</code> event handler. (see <a href="#events">Events</a>)</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#form1'</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">({</span><span class="nx">hide</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span> <span class="p">}</span> <span class="p">});</span>
+</pre></div>
+
+<h2>
+<a name="events" class="anchor" href="#events"><span class="octicon octicon-link"></span></a><a name="events">Events</a>
+</h2>
+
+<h3>
+<a name="plainoverlayshow" class="anchor" href="#plainoverlayshow"><span class="octicon octicon-link"></span></a><code>plainoverlayshow</code>
+</h3>
+
+<p>Triggered when the overlay is shown. (after the fading effect took <code>duration</code> to complete.)<br>
+An event handler can be attached when initializing too via <code>options.show</code>. (see <a href="#options">Options</a>)</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#form1'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'plainoverlayshow'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'#loading'</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">prog</span> <span class="o">+</span> <span class="s1">'%'</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>
+<a name="plainoverlayhide" class="anchor" href="#plainoverlayhide"><span class="octicon octicon-link"></span></a><code>plainoverlayhide</code>
+</h3>
+
+<p>Triggered when the overlay is hidden. (after the fading effect took <code>duration</code> to complete.)<br>
+An event handler can be attached when initializing too via <code>options.hide</code>. (see <a href="#options">Options</a>)</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#form1'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'plainoverlayhide'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'#complete-message'</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
 
 <h2>
 <a name="note" class="anchor" href="#note"><span class="octicon octicon-link"></span></a>Note</h2>
@@ -345,6 +399,8 @@ Default: <code>9000</code></p>
 <li>If target is <code>&lt;iframe&gt;</code> element, jQuery 1.10.3+ or 2.0.4+ must be used. (see <a href="http://bugs.jquery.com/ticket/14180">#14180: focusin/out special events don't work cross-window</a>)</li>
 <li>As everyone knows, IE8- has many problems. CSS <code>position:fixed</code> in HTML without <code>&lt;!DOCTYPE&gt;</code> is ignored.<br>
 If your web site supports IE8- and it use <code>position:fixed</code>, HTML must include <code>&lt;!DOCTYPE&gt;</code> even if plainOverlay is not used. And plainOverlay uses <code>position:fixed</code>.</li>
+<li>
+<code>plainoverlayshow</code> and <code>plainoverlayhide</code> events bubble up the DOM hierarchy.</li>
 </ul>
 
 <h2>
