@@ -93,7 +93,7 @@ $('#show-button').click(function() {
 
 ## <a name ="options">Options</a>
 
-A `options` Object can be specified to [Show](#show) method or [Initialize](#initialize) method. This Object can have following properties.
+An `options` Object can be specified to [Show](#show) method or [Initialize](#initialize) method. This Object can have following properties.
 
 ### `duration`
 
