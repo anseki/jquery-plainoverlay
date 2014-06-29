@@ -123,7 +123,7 @@ $('#sample-button4').click(function() {
   setTimeout(function() { $('body').plainOverlay('hide'); }, 5000);
   function countDown() {
     progress.text(--count);
-    setTimeout(countDown, 1000);
+    if (count >= 0) { setTimeout(countDown, 1000); }
   }
   setTimeout(countDown, 1000);
 });
@@ -280,6 +280,28 @@ Default: <code>0.6</code></p>
 
 <div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#list'</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">({</span><span class="nx">opacity</span><span class="o">:</span> <span class="mf">0.3</span><span class="p">});</span>
 </pre></div>
+
+<p>If you want to style the overlay more, add style to <code>plainoverlay</code> class.</p>
+
+<div class="highlight highlight-css"><pre><span class="nc">.plainoverlay</span> <span class="p">{</span>
+  <span class="k">background-image</span><span class="o">:</span> <span class="sx">url('bg.png')</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<!-- ======== sample -->
+<div class="sample-button" id="sample-button8">Show Sample (5sec.)</div>
+<script>
+$('#sample-button8').click(function() {
+  $('body').plainOverlay('show', {duration: 500});
+  $('body>.plainoverlay').css('backgroundImage', 'url("images/bg.png")');
+  setTimeout(function() {
+    $('body').plainOverlay('hide');
+    setTimeout(function() {
+      $('body>.plainoverlay').css('backgroundImage', 'none');
+    }, 500);
+  }, 5000);
+});
+</script>
+<!-- ======== /sample -->
 
 <h3>
 <a name="progress" class="anchor" href="#progress"><span class="octicon octicon-link"></span></a><code>progress</code>
