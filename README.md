@@ -124,6 +124,14 @@ A number in the range `0.0` (invisible) to `1.0` (solid).
 $('#list').plainOverlay({opacity: 0.3});
 ```
 
+If you want to style the overlay more, add style to `plainoverlay` class.
+
+```css
+.plainoverlay {
+  background-image: url('bg.png');
+}
+```
+
 ### `progress`
 
 Type: Function or Boolean  
@@ -204,6 +212,7 @@ If your web site supports IE8- and it use `position:fixed`, HTML must include `<
 [plainModal](http://anseki.github.io/jquery-plainmodal) may be better, if you want the overlay and dialog box (i.e. modal windows).
 
 ## Release History
+ * 2014-06-30			v0.4.0			Add `plainoverlay` class.
  * 2014-04-23			v0.3.0			Add custom events `plainoverlayshow` and `plainoverlayhide`
  * 2014-04-08			v0.2.1			Thicken overlay as default. (color, opacity)
  * 2014-03-10			v0.2.0			Add `options.zIndex`

@@ -174,7 +174,7 @@ function Overlay(jqTarget, options, curObject) {
   }
 
   that.jqOverlay = (curObject && curObject.jqOverlay ||
-    $('<div />').css({
+    $('<div class="plainoverlay" />').css({
       position:       that.isBody ? 'fixed' : 'absolute',
       left:           0,
       top:            0,
