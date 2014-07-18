@@ -181,7 +181,7 @@ function Overlay(jqTarget, options, curObject) {
       display:        'none',
       cursor:         'wait'
     }).appendTo(that.jqTarget)
-  ).css({backgroundColor: options.color, zIndex: options.zIndex});
+  ).css({backgroundColor: options.fillColor, zIndex: options.zIndex});
 
   if (that.jqProgress = options.progress === false ? undefined :
       (typeof options.progress === 'function' ?
@@ -367,11 +367,11 @@ Overlay.prototype.reset = function(forceHide) {
 function init(jq, options) {
   var opt = $.extend({
         duration:       200,
-        color:          '#888',
         opacity:        0.6,
         zIndex:         9000
         // Optional: progress, show, hide
       }, options);
+  opt.fillColor = options.fillColor || options.color /* alias */ || '#888';
   return jq.each(function() {
     var that = $(this);
     that.data(APP_NAME, new Overlay(that, opt, that.data(APP_NAME)));

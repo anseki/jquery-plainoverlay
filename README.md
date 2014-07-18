@@ -102,7 +102,7 @@ Default: `200`
 
 A number determining how long (milliseconds) the effect animation for showing and hiding the overlay will run.
 
-### `color`
+### `fillColor`
 
 Type: String  
 Default: `'#888'`
@@ -112,6 +112,8 @@ A fill-color of the overlay.
 ```js
 $('#list').plainOverlay({color: 'red'});
 ```
+
+`color` is an alias for `fillColor`.
 
 ### `opacity`
 
@@ -212,6 +214,7 @@ If your web site supports IE8- and it use `position:fixed`, HTML must include `<
 [plainModal](http://anseki.github.io/jquery-plainmodal) may be better, if you want the overlay and dialog box (i.e. modal windows).
 
 ## Release History
+ * 2014-07-18			v0.5.0			Rename `options.color` to `options.fillColor`.
  * 2014-06-30			v0.4.0			Add `plainoverlay` class.
  * 2014-04-23			v0.3.0			Add custom events `plainoverlayshow` and `plainoverlayhide`
  * 2014-04-08			v0.2.1			Thicken overlay as default. (color, opacity)
