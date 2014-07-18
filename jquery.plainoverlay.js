@@ -370,7 +370,7 @@ function init(jq, options) {
         zIndex:         9000
         // Optional: progress, show, hide
       }, options);
-  opt.fillColor = options.fillColor || options.color /* alias */ || '#888';
+  opt.fillColor = options && (options.fillColor || options.color /* alias */) || '#888';
   return jq.each(function() {
     var that = $(this);
     that.data(APP_NAME, new Overlay(that, opt, that.data(APP_NAME)));

@@ -110,7 +110,7 @@ Default: `'#888'`
 A fill-color of the overlay.
 
 ```js
-$('#list').plainOverlay({color: 'red'});
+$('#list').plainOverlay({fillColor: 'red'});
 ```
 
 `color` is an alias for `fillColor`.
