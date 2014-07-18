@@ -233,7 +233,7 @@ Default: <code>200</code></p>
 <p>A number determining how long (milliseconds) the effect animation for showing and hiding the overlay will run.</p>
 
 <h3>
-<a name="color" class="anchor" href="#color"><span class="octicon octicon-link"></span></a><code>color</code>
+<a name="fillcolor" class="anchor" href="#fillcolor"><span class="octicon octicon-link"></span></a><code>fillColor</code>
 </h3>
 
 <p>Type: String<br>
@@ -268,6 +268,8 @@ $('#sample-button5').click(function() {
 });
 </script>
 <!-- ======== /sample -->
+
+<p><code>color</code> is an alias for <code>fillColor</code>.</p>
 
 <h3>
 <a name="opacity" class="anchor" href="#opacity"><span class="octicon octicon-link"></span></a><code>opacity</code>
@@ -353,6 +355,17 @@ $('#sample-button7').click(function() {
 </script>
 <!-- ======== /sample -->
 
+<p>If you want to change the color of shapes in builtin progress-element, use CSS below.</p>
+
+<div class="highlight highlight-css"><pre><span class="c">/* Change to red */</span>
+<span class="nc">.jQuery-plainOverlay-progress</span> <span class="p">{</span>
+  <span class="k">border-color</span><span class="o">:</span> <span class="nb">red</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.jQuery-plainOverlay-progress-legacy</span> <span class="nt">div</span> <span class="p">{</span>
+  <span class="k">background-color</span><span class="o">:</span> <span class="nb">red</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
 <h3>
 <a name="zindex" class="anchor" href="#zindex"><span class="octicon octicon-link"></span></a><code>zIndex</code>
 </h3>
@@ -423,13 +436,10 @@ An event handler can be attached when initializing too via <code>options.hide</c
 If your web site supports IE8- and it use <code>position:fixed</code>, HTML must include <code>&lt;!DOCTYPE&gt;</code> even if plainOverlay is not used. And plainOverlay uses <code>position:fixed</code>.</li>
 <li>
 <code>plainoverlayshow</code> and <code>plainoverlayhide</code> events bubble up the DOM hierarchy.</li>
-</ul>
-
-<h2>
+</ul><h2>
 <a name="see-also" class="anchor" href="#see-also"><span class="octicon octicon-link"></span></a>See Also</h2>
 
 <p><a href="http://anseki.github.io/jquery-plainmodal">plainModal</a> may be better, if you want the overlay and dialog box (i.e. modal windows).</p>
-
       </section>
     </div>
 
