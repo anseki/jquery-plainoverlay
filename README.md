@@ -149,6 +149,20 @@ $('#list').plainOverlay({
 });
 ```
 
+Of course your image files, some CSS codes which are distributed free in the internet, or any elements can be used. (e.g. SVG Animations [jxnblk/loading](https://github.com/jxnblk/loading))
+
+If you want to change the color of shapes in builtin progress-element, use CSS below.
+
+```css
+/* Change to red */
+.jQuery-plainOverlay-progress {
+  border-color: red !important;
+}
+.jQuery-plainOverlay-progress-legacy div {
+  background-color: red !important;
+}
+```
+
 ### `zIndex`
 
 Type: Number  
