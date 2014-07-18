@@ -14,7 +14,7 @@ var APP_NAME = 'plainOverlay',
   // builtin progress element
   newProgress = (function() {
     function experimental(props, supports, prefix, sep) { // similar to Compass
-      sep = typeof sep === 'undefined' ? ';' : sep;
+      sep = sep === undefined ? ';' : sep;
       return $.map(props, function(prop) {
         return $.map(supports, function(support) {
           return (prefix || '') + support + prop;
@@ -58,7 +58,6 @@ var APP_NAME = 'plainOverlay',
       // Graceful Degradation
       if (typeof isLegacy !== 'boolean') {
         isLegacy = (function() { // similar to Modernizr
-          function is(obj, type) { return typeof obj === type; }
           function contains(str, substr) { return !!~('' + str).indexOf(substr); }
           var res, feature,
             modElem = document.createElement('modernizr'),
@@ -67,14 +66,14 @@ var APP_NAME = 'plainOverlay',
             cssomPrefixes = omPrefixes.split(' '),
             tests = {},
             _hasOwnProperty = ({}).hasOwnProperty,
-            hasOwnProp = !is(_hasOwnProperty, 'undefined') &&
-                !is(_hasOwnProperty.call, 'undefined') ?
+            hasOwnProp = _hasOwnProperty !== undefined &&
+                _hasOwnProperty.call !== undefined ?
               function (object, property) {
                 return _hasOwnProperty.call(object, property);
               } :
               function (object, property) {
-                return ((property in object) &&
-                  is(object.constructor.prototype[property], 'undefined'));
+                return (property in object) &&
+                  object.constructor.prototype[property] === undefined;
               };
 
           function testProps(props) {
