@@ -241,7 +241,7 @@ Default: <code>'#888'</code></p>
 
 <p>A fill-color of the overlay.</p>
 
-<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#list'</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">({</span><span class="nx">color</span><span class="o">:</span> <span class="s1">'red'</span><span class="p">});</span>
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#list'</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">({</span><span class="nx">fillColor</span><span class="o">:</span> <span class="s1">'red'</span><span class="p">});</span>
 </pre></div>
 
 <!-- ======== sample -->
@@ -261,7 +261,7 @@ $('#sample-button5').click(function() {
     $('#sample-window5').plainOverlay('hide');
     $(this).text('Show Sample');
   } else {
-    $('#sample-window5').plainOverlay('show', {color: 'red'});
+    $('#sample-window5').plainOverlay('show', {fillColor: 'red'});
     $(this).text('Hide Sample');
   }
   onSampleButton5 = !onSampleButton5;
