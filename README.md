@@ -1,6 +1,6 @@
 # plainOverlay
 
-The simple jQuery Plugin for customizable overlay which covers a page, elements or iframe-windows that is specified. plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file (9KB minified).  
+The simple jQuery Plugin for customizable overlay which covers a page, elements or iframe-windows that is specified. plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file (9KB minified).
 
 **See <a href="http://anseki.github.io/jquery-plainoverlay">DEMO</a>**
 
