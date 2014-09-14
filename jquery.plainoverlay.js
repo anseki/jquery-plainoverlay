@@ -10,6 +10,9 @@
 'use strict';
 
 var APP_NAME = 'plainOverlay',
+    APP_PREFIX = APP_NAME.toLowerCase(),
+    EVENT_TYPE_SHOW = APP_PREFIX + 'show',
+    EVENT_TYPE_HIDE = APP_PREFIX + 'hide',
 
   // builtin progress element
   newProgress = (function() {
@@ -173,7 +176,7 @@ function Overlay(jqTarget, options, curObject) {
   }
 
   that.jqOverlay = (curObject && curObject.jqOverlay ||
-    $('<div class="plainoverlay" />').css({
+    $('<div class="' + APP_PREFIX + '" />').css({
       position:       that.isBody ? 'fixed' : 'absolute',
       left:           0,
       top:            0,
@@ -278,7 +281,7 @@ Overlay.prototype.show = function() {
   that.isShown = true;
 
   that.jqOverlay.stop().fadeTo(that.duration, that.opacity,
-    function() { that.jqTargetOrg.trigger('plainoverlayshow'); });
+    function() { that.jqTargetOrg.trigger(EVENT_TYPE_SHOW); });
   if (that.jqProgress) {
     if (that.showProgress) { that.showProgress(true); }
     that.jqProgress.fadeIn(that.duration);
@@ -289,7 +292,7 @@ Overlay.prototype.hide = function() {
   var that = this;
   if (!that.isShown) { return; }
   that.jqOverlay.stop().fadeOut(that.duration,
-    function() { that.reset(); that.jqTargetOrg.trigger('plainoverlayhide'); });
+    function() { that.reset(); that.jqTargetOrg.trigger(EVENT_TYPE_HIDE); });
   if (that.jqProgress) { that.jqProgress.fadeOut(that.duration); }
 };
 
@@ -374,12 +377,10 @@ function init(jq, options) {
   return jq.each(function() {
     var that = $(this);
     that.data(APP_NAME, new Overlay(that, opt, that.data(APP_NAME)));
-    if (typeof opt.show === 'function') {
-      that.on('plainoverlayshow', opt.show);
-    }
-    if (typeof opt.hide === 'function') {
-      that.on('plainoverlayhide', opt.hide);
-    }
+    if (typeof opt.show === 'function')
+      { that.off(EVENT_TYPE_SHOW, opt.show).on(EVENT_TYPE_SHOW, opt.show); }
+    if (typeof opt.hide === 'function')
+      { that.off(EVENT_TYPE_HIDE, opt.hide).on(EVENT_TYPE_HIDE, opt.hide); }
   });
 }
 

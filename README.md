@@ -1,6 +1,7 @@
 # plainOverlay
 
 The simple jQuery Plugin for customizable overlay which covers a page, elements or iframe-windows that is specified. plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file (9KB minified).  
+
 **See <a href="http://anseki.github.io/jquery-plainoverlay">DEMO</a>**
 
 This is used for making users wait until the your application is ready.  
@@ -175,10 +176,30 @@ A `z-index` CSS property of the overlay.
 Type: Function  
 Default: `undefined`
 
-A `plainoverlayshow` event handler. (see [Events](#events))
+A `plainoverlayshow` event handler. This is convenient way to do `on('plainoverlayshow', handler)` method. (see [Events](#events))
 
 ```js
 $('#form1').plainOverlay({show: function(event) { console.log(event); } });
+```
+
+*NOTE:* If this option is specified in the [Show](#show) method, declared Function or the variable the Function is assigned should be specified (Don't specify the function expression). Because the [Show](#show) method may be called again, and the *function expression* generates the new Function every time.  
+The *"function statement"* and the *"function operator"* are different.  
+See [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions#Defining_functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions#Defining_functions)  
+For example: this code is OK.
+
+```js
+function handler(event) { console.log(event); }
+$('#show-button').click(function() {
+  $('#form1').plainOverlay('show', {show: handler});
+});
+```
+
+This code registers event handler repeatedly when the [Show](#show) method is called.
+
+```js
+$('#show-button').click(function() {
+  $('#form1').plainOverlay('show', {show: function(event) { console.log(event); } });
+});
 ```
 
 ### `hide`
@@ -186,11 +207,13 @@ $('#form1').plainOverlay({show: function(event) { console.log(event); } });
 Type: Function  
 Default: `undefined`
 
-A `plainoverlayhide` event handler. (see [Events](#events))
+A `plainoverlayhide` event handler. This is convenient way to do `on('plainoverlayhide', handler)` method. (see [Events](#events))
 
 ```js
 $('#form1').plainOverlay({hide: function(event) { console.log(event); } });
 ```
+
+*NOTE:* See "NOTE" in `show` option.
 
 ## <a name ="events">Events</a>
 
@@ -228,6 +251,7 @@ If your web site supports IE8- and it use `position:fixed`, HTML must include `<
 [plainModal](http://anseki.github.io/jquery-plainmodal) may be better, if you want the overlay and dialog box (i.e. modal windows).
 
 ## Release History
+ * 2014-09-15			v0.5.4			Fix: The event handler by initialize is registered repeatedly.
  * 2014-07-18			v0.5.0			Rename `options.color` to `options.fillColor`.
  * 2014-06-30			v0.4.0			Add `plainoverlay` class.
  * 2014-04-23			v0.3.0			Add custom events `plainoverlayshow` and `plainoverlayhide`
