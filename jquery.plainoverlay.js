@@ -183,6 +183,7 @@ function Overlay(jqTarget, options, curObject) {
       display:        'none',
       cursor:         'wait'
     }).appendTo(that.jqTarget)
+      .on('touchmove', function() { return false; }) // avoid scroll on touch devices
   ).css({backgroundColor: options.fillColor, zIndex: options.zIndex});
 
   if (that.jqProgress = options.progress === false ? undefined :
@@ -193,7 +194,8 @@ function Overlay(jqTarget, options, curObject) {
       display:        'none',
       zIndex:         options.zIndex + 1,
       cursor:         'wait'
-    }).appendTo(that.jqTarget);
+    }).appendTo(that.jqTarget)
+      .on('touchmove', function() { return false; }); // avoid scroll on touch devices;
   }
 
   // Not shared methods for calling per object in event of one element.
