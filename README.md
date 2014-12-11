@@ -5,7 +5,8 @@ The simple jQuery Plugin for customizable overlay which covers a page, elements 
 **See <a href="http://anseki.github.io/jquery-plainoverlay">DEMO</a>**
 
 This is used for making users wait until the your application is ready.  
-The elements under the overlay don't accept access via mouse or keyboard. And scrollable element (e.g. `<body>`, `<div style="overflow:scroll">` or `<iframe>`) which is specified can't scroll.  
+The elements under the overlay don't accept access via mouse or keyboard. And scrollable element (e.g. `<body>`, `<div style="overflow:scroll">` or `<iframe>`) which is specified can't scroll.
+
 Your progress-element (messages or images that means "Please wait...") can be shown to users on the overlay. You can free style it to perfect match for your web site. Or plainOverlay has a simple builtin progress-element.
 
 plainOverlay do:
