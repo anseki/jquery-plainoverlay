@@ -172,12 +172,12 @@ Default: `9000`
 
 A `z-index` CSS property of the overlay.
 
-### `show`
+### `show`, `hide`
 
 Type: Function  
 Default: `undefined`
 
-A `plainoverlayshow` event handler. This is convenient way to do `on('plainoverlayshow', handler)` method. (see [Events](#events))
+The `plainoverlayshow` and `plainoverlayhide` event handlers. This is convenient way to do `on(type, handler)` method. (see [Events](#events))
 
 ```js
 $('#form1').plainOverlay({show: function(event) { console.log(event); } });
@@ -202,19 +202,6 @@ $('#show-button').click(function() {
   $('#form1').plainOverlay('show', {show: function(event) { console.log(event); } });
 });
 ```
-
-### `hide`
-
-Type: Function  
-Default: `undefined`
-
-A `plainoverlayhide` event handler. This is convenient way to do `on('plainoverlayhide', handler)` method. (see [Events](#events))
-
-```js
-$('#form1').plainOverlay({hide: function(event) { console.log(event); } });
-```
-
-*NOTE:* See "NOTE" in `show` option.
 
 ## <a name ="events">Events</a>
 
