@@ -34,7 +34,7 @@ Load after jQuery.
 
 ## Methods
 
-### <a name ="show">Show</a>
+### `show`
 
 ```js
 element.plainOverlay('show'[, options])
@@ -44,7 +44,7 @@ Cover specified element with the overlay. This element may be `<body>`, `<iframe
 If `options` (see [Options](#options)) is specified, element is initialized with specified `options` before the overlay is shown. If element is not initialized yet, element is initialized even if `options` is not specified.  
 An element can be initialized by new `options` any number of times.
 
-### <a name ="hide">Hide</a>
+### `hide`
 
 ```js
 element.plainOverlay('hide')
@@ -59,9 +59,9 @@ element.plainOverlay([options])
 ```
 
 Initialize specified element. (preparation the overlay)  
-The [Show](#show) method can initialize too. This is used to initialize without showing the overlay at voluntary time.  
-You can specify `options` to every [Show](#show) method. But, if `options` of an element isn't changed, re-initializing it isn't needed. Then, you specify `options` to only first [Show](#show) method, or use this method for initializing it only once.  
-If you don't customize [Options](#options) (using default all), this method isn't needed because `options` isn't specified to [Show](#show) method, and element is initialized at only first time.
+The `show` method can initialize too. This is used to initialize without showing the overlay at voluntary time.  
+You can specify `options` to every `show` method. But, if `options` of an element isn't changed, re-initializing it isn't needed. Then, you specify `options` to only first `show` method, or use this method for initializing it only once.  
+If you don't customize [Options](#options) (using default all), this method isn't needed because `options` isn't specified to `show` method, and element is initialized at only first time.
 
 In this code, unneeded initializing is done again, again, and again.
 
@@ -94,7 +94,7 @@ $('#show-button').click(function() {
 
 ## <a name ="options">Options</a>
 
-An `options` Object can be specified to [Show](#show) method or [Initialize](#initialize) method. This Object can have following properties.
+An `options` Object can be specified to `show` method or [Initialize](#initialize) method. This Object can have following properties.
 
 ### `duration`
 
@@ -182,7 +182,7 @@ A `plainoverlayshow` event handler. This is convenient way to do `on('plainoverl
 $('#form1').plainOverlay({show: function(event) { console.log(event); } });
 ```
 
-*NOTE:* If this option is specified in the [Show](#show) method, declared Function or the variable the Function is assigned should be specified (Don't specify the function expression). Because the [Show](#show) method may be called again, and the *function expression* generates the new Function every time.  
+*NOTE:* If this option is specified in the `show` method, declared Function or the variable the Function is assigned should be specified (Don't specify the function expression). Because the `show` method may be called again, and the *function expression* generates the new Function every time.  
 The *"function statement"* and the *"function operator"* are different.  
 See [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions#Defining_functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions#Defining_functions)  
 For example: this code is OK.
@@ -194,7 +194,7 @@ $('#show-button').click(function() {
 });
 ```
 
-This code registers event handler repeatedly when the [Show](#show) method is called.
+This code registers event handler repeatedly when the `show` method is called.
 
 ```js
 $('#show-button').click(function() {
@@ -224,7 +224,7 @@ An event handler can be attached when initializing too via `options.show`. (see 
 
 ```js
 $('#form1').on('plainoverlayshow', function(event) {
-  $('#loading', event.target).text(prog + '%');
+  $('#loading', event.target).text(size + ' Bytes Downloading');
 });
 ```
 
