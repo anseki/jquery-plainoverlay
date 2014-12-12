@@ -1,12 +1,4 @@
 
-img.preload {
-  width: 1px;
-  height: 1px;
-  position: absolute;
-  left: -1px;
-  top: -1px;
-}
-
 .sample-button-head {
   text-align: center;
 }

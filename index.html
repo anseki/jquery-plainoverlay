@@ -48,9 +48,6 @@
   </div>
 </div>
 
-<!-- preload -->
-<img src="img/loading-bars.svg" alt="" class="preload">
-
 <script>
 $(function() {
 
@@ -71,6 +68,9 @@ $(function() {
 
 <script>
 $(function() {
+
+  // preload
+  (new Image()).src = 'img/loading-bars.svg';
 
   var isOpened, firstTimer;
   $('#sample-01b').plainOverlay({progress: function() {
@@ -280,11 +280,11 @@ $(function() {
 <!-- ================ sample -->
 <p><button id="sample-04-button">Show Sample (5sec.)</button></p>
 
-<!-- preload -->
-<img src="img/bg.png" alt="" class="preload">
-
 <script>
 $(function() {
+
+  // preload
+  (new Image()).src = 'img/bg.png';
 
   $('#sample-04-button').click(function() {
     $('body').plainOverlay('show', {duration: 500});
@@ -349,11 +349,11 @@ $(function() {
 <!-- ================ sample -->
 <p><button id="sample-06-button">Show Sample (5sec.)</button></p>
 
-<!-- preload -->
-<img src="img/loading-spinning-bubbles.svg" alt="" class="preload">
-
 <script>
 $(function() {
+
+  // preload
+  (new Image()).src = 'img/loading-spinning-bubbles.svg';
 
   $('#sample-06-button').click(function() {
     $('body').plainOverlay('show', {progress: function() {
