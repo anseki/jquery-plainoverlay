@@ -35,7 +35,7 @@ Load after jQuery.
 
 ## Methods
 
-### `show`
+### show
 
 ```js
 element.plainOverlay('show'[, options])
@@ -45,7 +45,7 @@ Cover specified element with the overlay. This element may be `<body>`, `<iframe
 If `options` (see [Options](#options)) is specified, element is initialized with specified `options` before the overlay is shown. If element is not initialized yet, element is initialized even if `options` is not specified.  
 An element can be initialized by new `options` any number of times.
 
-### `hide`
+### hide
 
 ```js
 element.plainOverlay('hide')
@@ -97,14 +97,14 @@ $('#show-button').click(function() {
 
 An `options` Object can be specified to `show` method or [Initialize](#initialize) method. This Object can have following properties.
 
-### `duration`
+### duration
 
 Type: Number  
 Default: `200`
 
 A number determining how long (milliseconds) the effect animation for showing and hiding the overlay will run.
 
-### `fillColor`
+### fillColor
 
 Type: String  
 Default: `'#888'`
@@ -117,7 +117,7 @@ $('#list').plainOverlay({fillColor: 'red'});
 
 `color` is an alias for `fillColor`.
 
-### `opacity`
+### opacity
 
 Type: Number  
 Default: `0.6`
@@ -136,7 +136,7 @@ If you want to style the overlay more, add style to `plainoverlay` class.
 }
 ```
 
-### `progress`
+### progress
 
 Type: Function or Boolean  
 Default: Builtin Element
@@ -165,14 +165,14 @@ If you want to change the color of shapes in builtin progress-element, use CSS b
 }
 ```
 
-### `zIndex`
+### zIndex
 
 Type: Number  
 Default: `9000`
 
 A `z-index` CSS property of the overlay.
 
-### `show`, `hide`
+### show, hide
 
 Type: Function  
 Default: `undefined`
@@ -205,7 +205,7 @@ $('#show-button').click(function() {
 
 ## <a name ="events">Events</a>
 
-### `plainoverlayshow`
+### plainoverlayshow
 
 Triggered when the overlay is shown. (after the fading effect took `duration` to complete.)  
 An event handler can be attached when initializing too via `options.show`. (see [Options](#options))
@@ -216,7 +216,7 @@ $('#form1').on('plainoverlayshow', function(event) {
 });
 ```
 
-### `plainoverlayhide`
+### plainoverlayhide
 
 Triggered when the overlay is hidden. (after the fading effect took `duration` to complete.)  
 An event handler can be attached when initializing too via `options.hide`. (see [Options](#options))
