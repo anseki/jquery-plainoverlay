@@ -155,7 +155,7 @@ $(function() {
 
 <p>Your progress-element (messages or images that means &quot;Please wait...&quot;) can be shown to users on the overlay. You can free style it to perfect match for your web site. Or plainOverlay has a simple builtin progress-element.</p>
 
-<p>plainOverlay do:</p>
+<p>plainOverlay does:</p>
 
 <ul>
 <li>Covering a page, elements or iframe-windows that is specified with the overlay.</li>
@@ -178,12 +178,12 @@ $(function() {
 </code></pre></div>
 <h2 id="methods">Methods</h2>
 
-<h3 id="show"><code>show</code></h3>
+<h3 id="show">show</h3>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">[,</span> <span class="nx">options</span><span class="p">])</span>
 </code></pre></div>
 <p>Cover specified element with the overlay. This element may be <code>&lt;body&gt;</code>, <code>&lt;iframe&gt;</code> or box-element like <code>&lt;div&gt;</code>. <code>$(document)</code> and <code>$(window)</code> are same as <code>$(&#39;body&#39;)</code>.<br>If <code>options</code> (see <a href="#options">Options</a>) is specified, element is initialized with specified <code>options</code> before the overlay is shown. If element is not initialized yet, element is initialized even if <code>options</code> is not specified.<br>An element can be initialized by new <code>options</code> any number of times.</p>
 
-<h3 id="hide"><code>hide</code></h3>
+<h3 id="hide">hide</h3>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">)</span>
 </code></pre></div>
 <p>Hide the overlay.</p>
@@ -191,7 +191,7 @@ $(function() {
 <h3 id="initialize">Initialize</h3>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">([</span><span class="nx">options</span><span class="p">])</span>
 </code></pre></div>
-<p>Initialize specified element. (preparation the overlay)<br>The <code>show</code> method can initialize too. This is used to initialize without showing the overlay at voluntary time.<br>You can specify <code>options</code> to every <code>show</code> method. But, if <code>options</code> of an element isn&#39;t changed, re-initializing it isn&#39;t needed. Then, you specify <code>options</code> to only first <code>show</code> method, or use this method for initializing it only once.<br>If you don&#39;t customize <a href="#options">Options</a> (using default all), this method isn&#39;t needed because <code>options</code> isn&#39;t specified to <code>show</code> method, and element is initialized at only first time.</p>
+<p>Initialize specified element. (preparation the overlay)<br>The <code>show</code> method too, can initialize. This is used to initialize without showing the overlay at voluntary time.<br>You can specify <code>options</code> to every <code>show</code> method. But, if <code>options</code> of an element isn&#39;t changed, re-initializing it isn&#39;t needed. Then, you specify <code>options</code> to only first <code>show</code> method, or use this method for initializing it only once.<br>If you don&#39;t customize <a href="#options">Options</a> (using default all), this method isn&#39;t needed because <code>options</code> isn&#39;t specified to <code>show</code> method, and element is initialized at only first time.</p>
 
 <p>In this code, unneeded initializing is done again, again, and again.</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#show-button&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -217,13 +217,13 @@ $(function() {
 
 <p>An <code>options</code> Object can be specified to <code>show</code> method or <a href="#initialize">Initialize</a> method. This Object can have following properties.</p>
 
-<h3 id="duration"><code>duration</code></h3>
+<h3 id="duration">duration</h3>
 
 <p>Type: Number<br>Default: <code>200</code></p>
 
 <p>A number determining how long (milliseconds) the effect animation for showing and hiding the overlay will run.</p>
 
-<h3 id="fillcolor"><code>fillColor</code></h3>
+<h3 id="fillcolor">fillColor</h3>
 
 <p>Type: String<br>Default: <code>&#39;#888&#39;</code></p>
 
@@ -265,7 +265,7 @@ $(function() {
 
 <p><code>color</code> is an alias for <code>fillColor</code>.</p>
 
-<h3 id="opacity"><code>opacity</code></h3>
+<h3 id="opacity">opacity</h3>
 
 <p>Type: Number<br>Default: <code>0.6</code></p>
 
@@ -303,7 +303,7 @@ $(function() {
 <!-- ================ /sample -->
 <!-- /include "sample_04.html" -->
 
-<h3 id="progress"><code>progress</code></h3>
+<h3 id="progress">progress</h3>
 
 <p>Type: Function or Boolean<br>Default: Builtin Element</p>
 
@@ -377,13 +377,13 @@ $(function() {
   <span class="k">background-color</span><span class="o">:</span> <span class="nb">red</span> <span class="cp">!important</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="zindex"><code>zIndex</code></h3>
+<h3 id="zindex">zIndex</h3>
 
 <p>Type: Number<br>Default: <code>9000</code></p>
 
 <p>A <code>z-index</code> CSS property of the overlay.</p>
 
-<h3 id="show,-hide"><code>show</code>, <code>hide</code></h3>
+<h3 id="show,-hide">show, hide</h3>
 
 <p>Type: Function<br>Default: <code>undefined</code></p>
 
@@ -403,16 +403,16 @@ $(function() {
 </code></pre></div>
 <h2 id="events">Events</h2>
 
-<h3 id="plainoverlayshow"><code>plainoverlayshow</code></h3>
+<h3 id="plainoverlayshow">plainoverlayshow</h3>
 
-<p>Triggered when the overlay is shown. (after the fading effect took <code>duration</code> to complete.)<br>An event handler can be attached when initializing too via <code>options.show</code>. (see <a href="#options">Options</a>)</p>
+<p>Triggered when the overlay is shown. (after the fading effect took <code>duration</code> to complete.)<br>An event handler can be attached when initializing via <code>options.show</code> as well. (see <a href="#options">Options</a>)</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#form1&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;plainoverlayshow&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#loading&#39;</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">size</span> <span class="o">+</span> <span class="s1">&#39; Bytes Downloading&#39;</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3 id="plainoverlayhide"><code>plainoverlayhide</code></h3>
+<h3 id="plainoverlayhide">plainoverlayhide</h3>
 
-<p>Triggered when the overlay is hidden. (after the fading effect took <code>duration</code> to complete.)<br>An event handler can be attached when initializing too via <code>options.hide</code>. (see <a href="#options">Options</a>)</p>
+<p>Triggered when the overlay is hidden. (after the fading effect took <code>duration</code> to complete.)<br>An event handler can be attached when initializing via <code>options.hide</code> as well. (see <a href="#options">Options</a>)</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#form1&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;plainoverlayhide&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#complete-message&#39;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
 <span class="p">});</span>
