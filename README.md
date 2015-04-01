@@ -9,7 +9,7 @@ The elements under the overlay don't accept access via mouse or keyboard. And sc
 
 Your progress-element (messages or images that means "Please wait...") can be shown to users on the overlay. You can free style it to perfect match for your web site. Or plainOverlay has a simple builtin progress-element.
 
-plainOverlay do:
+plainOverlay does:
 
 - Covering a page, elements or iframe-windows that is specified with the overlay.
 - Avoiding focusing elements under the overlay. (by pressing Tab key)
@@ -60,7 +60,7 @@ element.plainOverlay([options])
 ```
 
 Initialize specified element. (preparation the overlay)  
-The `show` method can initialize too. This is used to initialize without showing the overlay at voluntary time.  
+The `show` method too, can initialize. This is used to initialize without showing the overlay at voluntary time.  
 You can specify `options` to every `show` method. But, if `options` of an element isn't changed, re-initializing it isn't needed. Then, you specify `options` to only first `show` method, or use this method for initializing it only once.  
 If you don't customize [Options](#options) (using default all), this method isn't needed because `options` isn't specified to `show` method, and element is initialized at only first time.
 
@@ -208,7 +208,7 @@ $('#show-button').click(function() {
 ### plainoverlayshow
 
 Triggered when the overlay is shown. (after the fading effect took `duration` to complete.)  
-An event handler can be attached when initializing too via `options.show`. (see [Options](#options))
+An event handler can be attached when initializing via `options.show` as well. (see [Options](#options))
 
 ```js
 $('#form1').on('plainoverlayshow', function(event) {
@@ -219,7 +219,7 @@ $('#form1').on('plainoverlayshow', function(event) {
 ### plainoverlayhide
 
 Triggered when the overlay is hidden. (after the fading effect took `duration` to complete.)  
-An event handler can be attached when initializing too via `options.hide`. (see [Options](#options))
+An event handler can be attached when initializing via `options.hide` as well. (see [Options](#options))
 
 ```js
 $('#form1').on('plainoverlayhide', function(event) {
