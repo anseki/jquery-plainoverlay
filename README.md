@@ -237,13 +237,3 @@ If your web site supports IE8- and it use `position:fixed`, HTML must include `<
 ## See Also
 
 [plainModal](http://anseki.github.io/jquery-plainmodal) may be better, if you want the overlay and dialog box (i.e. modal windows).
-
-## History
- * 2014-11-02			v0.5.6			Fix: touch devices scroll the window.
- * 2014-09-15			v0.5.4			Fix: The event handler by initialize is registered repeatedly.
- * 2014-07-18			v0.5.0			Rename `options.color` to `options.fillColor`.
- * 2014-06-30			v0.4.0			Add `plainoverlay` class.
- * 2014-04-23			v0.3.0			Add custom events `plainoverlayshow` and `plainoverlayhide`
- * 2014-04-08			v0.2.1			Thicken overlay as default. (color, opacity)
- * 2014-03-10			v0.2.0			Add `options.zIndex`
- * 2014-02-14			v0.1.0			Initial release.
