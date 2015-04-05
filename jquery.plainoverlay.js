@@ -403,11 +403,24 @@ function overlayHide(jq) {
   });
 }
 
-$.fn[APP_NAME] = function(action, options) {
+function overlaySetOption(jq, name, newValue) {
+  var jqTarget = jq.length ? jq.eq(0) : undefined, // only 1st
+    overlay;
+  if (!jqTarget) { return; }
+  overlay = jqTarget.data(APP_NAME) || init(jqTarget).data(APP_NAME);
+  if (!overlay.hasOwnProperty(name)) { return; }
+/* jshint eqnull:true */
+  if (newValue != null) { overlay[name] = newValue; }
+/* jshint eqnull:false */
+  return overlay[name];
+}
+
+$.fn[APP_NAME] = function(action, arg1, arg2) {
   return (
-    action === 'show' ?   overlayShow(this, options) :
+    action === 'show' ?   overlayShow(this, arg1) :
     action === 'hide' ?   overlayHide(this) :
-                          init(this, action)); // options.
+    action === 'option' ? overlaySetOption(this, arg1, arg2) :
+                          init(this, action)); // action = options.
 };
 
 })(jQuery);

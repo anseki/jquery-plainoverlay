@@ -1,6 +1,6 @@
 # plainOverlay
 
-The simple jQuery Plugin for customizable overlay which covers a page, elements or iframe-windows that is specified. plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file (9KB minified).
+The simple jQuery Plugin for customizable overlay which covers a page, elements or iframe-windows that is specified. plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file.
 
 **See <a href="http://anseki.github.io/jquery-plainoverlay">DEMO</a>**
 
@@ -53,7 +53,7 @@ element.plainOverlay('hide')
 
 Hide the overlay.
 
-### <a name ="initialize">Initialize</a>
+### Initialize
 
 ```js
 element.plainOverlay([options])
@@ -93,7 +93,15 @@ $('#show-button').click(function() {
 });
 ```
 
-## <a name ="options">Options</a>
+### option
+
+```js
+currentValue = element.plainOverlay('option', optionName[, newValue])
+```
+
+Return the current option value (see [Options](#options)) as `optionName`. If `newValue` is specified, it is set before returning.
+
+## Options
 
 An `options` Object can be specified to `show` method or [Initialize](#initialize) method. This Object can have following properties.
 
@@ -203,7 +211,7 @@ $('#show-button').click(function() {
 });
 ```
 
-## <a name ="events">Events</a>
+## Events
 
 ### plainoverlayshow
 
