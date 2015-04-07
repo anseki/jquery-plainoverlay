@@ -101,6 +101,8 @@ currentValue = element.plainOverlay('option', optionName[, newValue])
 
 Return the current option value (see [Options](#options)) as `optionName`. If `newValue` is specified, it is set before returning.
 
+*NOTE:* The current version of the plainOverlay can change option value of `duration` and `opacity`. Use [Initialize](#initialize) method to update option value of others.
+
 ## Options
 
 An `options` Object can be specified to `show` method or [Initialize](#initialize) method. This Object can have following properties.
