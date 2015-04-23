@@ -35,7 +35,7 @@ Load after jQuery.
 
 ## Methods
 
-### show
+### `show`
 
 ```js
 element.plainOverlay('show'[, options])
@@ -45,7 +45,7 @@ Cover specified element with the overlay. This element may be `<body>`, `<iframe
 If `options` (see [Options](#options)) is specified, element is initialized with specified `options` before the overlay is shown. If element is not initialized yet, element is initialized even if `options` is not specified.  
 An element can be initialized by new `options` any number of times.
 
-### hide
+### `hide`
 
 ```js
 element.plainOverlay('hide')
@@ -60,9 +60,9 @@ element.plainOverlay([options])
 ```
 
 Initialize specified element. (preparation the overlay)  
-The `show` method too, can initialize. This is used to initialize without showing the overlay at voluntary time.  
-You can specify `options` to every `show` method. But, if `options` of an element isn't changed, re-initializing it isn't needed. Then, you specify `options` to only first `show` method, or use this method for initializing it only once.  
-If you don't customize [Options](#options) (using default all), this method isn't needed because `options` isn't specified to `show` method, and element is initialized at only first time.
+The [`show`](#show) method too, can initialize. This is used to initialize without showing the overlay at voluntary time.  
+You can specify `options` to every [`show`](#show) method. But, if `options` of an element isn't changed, re-initializing it isn't needed. Then, you specify `options` to only first [`show`](#show) method, or use this method for initializing it only once.  
+If you don't customize [Options](#options) (using default all), this method isn't needed because `options` isn't specified to [`show`](#show) method, and element is initialized at only first time.
 
 In this code, unneeded initializing is done again, again, and again.
 
@@ -93,7 +93,7 @@ $('#show-button').click(function() {
 });
 ```
 
-### option
+### `option`
 
 ```js
 currentValue = element.plainOverlay('option', optionName[, newValue])
@@ -101,20 +101,20 @@ currentValue = element.plainOverlay('option', optionName[, newValue])
 
 Return the current option value (see [Options](#options)) as `optionName`. If `newValue` is specified, it is set before returning.
 
-*NOTE:* The current version of the plainOverlay can change option value of `duration` and `opacity`. Use [Initialize](#initialize) method to update option value of others.
+*NOTE:* The current version of the plainOverlay can change option value of [`duration`](#duration) and [`opacity`](#opacity) options. Use [Initialize](#initialize) method to update option value of others.
 
 ## Options
 
-An `options` Object can be specified to `show` method or [Initialize](#initialize) method. This Object can have following properties.
+An `options` Object can be specified to [`show`](#show) method or [Initialize](#initialize) method. This Object can have following properties.
 
-### duration
+### `duration`
 
 Type: Number  
 Default: `200`
 
 A number determining how long (milliseconds) the effect animation for showing and hiding the overlay will run.
 
-### fillColor
+### `fillColor`
 
 Type: String  
 Default: `'#888'`
@@ -127,7 +127,7 @@ $('#list').plainOverlay({fillColor: 'red'});
 
 `color` is an alias for `fillColor`.
 
-### opacity
+### `opacity`
 
 Type: Number  
 Default: `0.6`
@@ -146,7 +146,7 @@ If you want to style the overlay more, add style to `plainoverlay` class.
 }
 ```
 
-### progress
+### `progress`
 
 Type: Function or Boolean  
 Default: Builtin Element
@@ -175,25 +175,25 @@ If you want to change the color of shapes in builtin progress-element, use CSS b
 }
 ```
 
-### zIndex
+### `zIndex`
 
 Type: Number  
 Default: `9000`
 
 A `z-index` CSS property of the overlay.
 
-### show, hide
+### `show`, `hide`
 
 Type: Function  
 Default: `undefined`
 
-The `plainoverlayshow` and `plainoverlayhide` event handlers. This is convenient way to do `on(type, handler)` method. (see [Events](#events))
+The [`plainoverlayshow`](#plainoverlayshow) and [`plainoverlayhide`](#plainoverlayhide) event handlers. This is convenient way to do `on(type, handler)` method. (see [Events](#events))
 
 ```js
 $('#form1').plainOverlay({show: function(event) { console.log(event); } });
 ```
 
-*NOTE:* If this option is specified in the `show` method, declared Function or the variable the Function is assigned should be specified (Don't specify the function expression). Because the `show` method may be called again, and the *function expression* generates the new Function every time.  
+*NOTE:* If this option is specified in the [`show`](#show) method, declared Function or the variable the Function is assigned should be specified (Don't specify the function expression). Because the [`show`](#show) method may be called again, and the *function expression* generates the new Function every time.  
 The *"function statement"* and the *"function operator"* are different.  
 See [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions#Defining_functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions#Defining_functions)  
 For example: this code is OK.
@@ -205,7 +205,7 @@ $('#show-button').click(function() {
 });
 ```
 
-This code registers event handler repeatedly when the `show` method is called.
+This code registers event handler repeatedly when the [`show`](#show) method is called.
 
 ```js
 $('#show-button').click(function() {
@@ -215,10 +215,10 @@ $('#show-button').click(function() {
 
 ## Events
 
-### plainoverlayshow
+### `plainoverlayshow`
 
-Triggered when the overlay is shown. (after the fading effect took `duration` to complete.)  
-An event handler can be attached when initializing via `options.show` as well. (see [Options](#options))
+Triggered when the overlay is shown. (after the fading effect took [`options.duration`](#duration) to complete.)  
+An event handler can be attached when initializing via [`options.show`](#show-hide) as well.
 
 ```js
 $('#form1').on('plainoverlayshow', function(event) {
@@ -226,10 +226,10 @@ $('#form1').on('plainoverlayshow', function(event) {
 });
 ```
 
-### plainoverlayhide
+### `plainoverlayhide`
 
-Triggered when the overlay is hidden. (after the fading effect took `duration` to complete.)  
-An event handler can be attached when initializing via `options.hide` as well. (see [Options](#options))
+Triggered when the overlay is hidden. (after the fading effect took [`options.duration`](#duration) to complete.)  
+An event handler can be attached when initializing via [`options.hide`](#show-hide) as well.
 
 ```js
 $('#form1').on('plainoverlayhide', function(event) {
@@ -242,7 +242,7 @@ $('#form1').on('plainoverlayhide', function(event) {
 - If target is `<iframe>` element, jQuery 1.10.3+ or 2.0.4+ must be used. (see [#14180: focusin/out special events don't work cross-window](http://bugs.jquery.com/ticket/14180))
 - As everyone knows, IE8- has many problems. CSS `position:fixed` in HTML without `<!DOCTYPE>` is ignored.  
 If your web site supports IE8- and it use `position:fixed`, HTML must include `<!DOCTYPE>` even if plainOverlay is not used. And plainOverlay uses `position:fixed`.
-- `plainoverlayshow` and `plainoverlayhide` events bubble up the DOM hierarchy.
+- [`plainoverlayshow`](#plainoverlayshow) and [`plainoverlayhide`](#plainoverlayhide) events bubble up the DOM hierarchy.
 
 ## See Also
 
