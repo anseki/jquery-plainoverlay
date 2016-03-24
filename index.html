@@ -184,9 +184,11 @@ $(function() {
 <p>Cover the specified element with the overlay. This element may be <code>&lt;body&gt;</code>, <code>&lt;iframe&gt;</code> or a box-element like <code>&lt;div&gt;</code>. <code>$(document)</code> and <code>$(window)</code> are same as <code>$(&#39;body&#39;)</code>.<br>If <code>options</code> (see <a href="#options">Options</a>) is specified, the element is initialized with specified <code>options</code> before the overlay is shown. If the element is not initialized yet, it is initialized even if <code>options</code> is not specified (with the default options).<br>The element can be initialized by new <code>options</code> any number of times.</p>
 
 <h3 id="hide"><code>hide</code></h3>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">[,</span> <span class="nx">ignoreComplete</span><span class="p">])</span>
 </code></pre></div>
 <p>Hide the overlay.</p>
+
+<p>By default, behavior restrictions of the element (e.g. scrolling) are removed after the fading effect took <a href="#duration"><code>options.duration</code></a> to complete. (i.e. after the overlay was hidden completely.)<br>If <code>true</code> is specified to <code>ignoreComplete</code>, the restrictions are removed when <code>hide</code> method is called, and <a href="#plainoverlayhide"><code>plainoverlayhide</code></a> event is triggered.<br>For example, this is used to do something about the element (e.g. changing scroll position) while the overlay is shown.</p>
 
 <h3 id="initialize">Initialize</h3>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">([</span><span class="nx">options</span><span class="p">])</span>
@@ -419,7 +421,7 @@ $(function() {
 </code></pre></div>
 <h3 id="plainoverlayhide"><code>plainoverlayhide</code></h3>
 
-<p>Triggered when the overlay is hidden. (after the fading effect took <a href="#duration"><code>options.duration</code></a> to complete.)<br>An event handler can be attached when initializing via <a href="#show-hide"><code>options.hide</code></a> as well.</p>
+<p>Triggered when the overlay is hidden.<br>By default, it is triggered after the fading effect took <a href="#duration"><code>options.duration</code></a> to complete. If <a href="#hide"><code>hide</code></a> method is called with <code>ignoreComplete</code> argument, it is triggered when <code>hide</code> method is called.<br>An event handler can be attached when initializing via <a href="#show-hide"><code>options.hide</code></a> as well.</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#form1&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;plainoverlayhide&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#complete-message&#39;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
 <span class="p">});</span>
