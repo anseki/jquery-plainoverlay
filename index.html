@@ -222,6 +222,24 @@ $(function() {
 
 <p><em>NOTE:</em> The current version of the plainOverlay can change option value of <a href="#duration"><code>duration</code></a> and <a href="#opacity"><code>opacity</code></a> options. Use <a href="#initialize">Initialize</a> method to update option value of others.</p>
 
+<h3 id="scrollleft,-scrolltop"><code>scrollLeft</code>, <code>scrollTop</code></h3>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;scrollLeft&#39;</span><span class="p">,</span> <span class="nx">scrollLen</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;scrollTop&#39;</span><span class="p">,</span> <span class="nx">scrollLen</span><span class="p">)</span>
+</code></pre></div>
+<p>plainOverlay avoid scrolling the element. These methods are used instead of <code>element.scrollLeft</code> and <code>element.scrollTop</code> methods to scroll the element while the overlay is shown.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">show</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Now, the overlay is shown. The user can&#39;t scroll the page.</span>
+    <span class="c1">// Do something...</span>
+    <span class="c1">// Scroll the page to show something.</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;scrollLeft&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;scrollTop&#39;</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+      <span class="c1">// And hide the overlay.</span>
+      <span class="p">.</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
 <h2 id="options">Options</h2>
 
 <p>An <code>options</code> Object can be specified to <a href="#show"><code>show</code></a> or <a href="#initialize">Initialize</a> method. It can have following properties.</p>
