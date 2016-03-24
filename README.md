@@ -48,10 +48,14 @@ The element can be initialized by new `options` any number of times.
 ### `hide`
 
 ```js
-element = element.plainOverlay('hide')
+element = element.plainOverlay('hide'[, ignoreComplete])
 ```
 
 Hide the overlay.
+
+By default, behavior restrictions of the element (e.g. scrolling) are removed after the fading effect took [`options.duration`](#duration) to complete. (i.e. after the overlay was hidden completely.)  
+If `true` is specified to `ignoreComplete`, the restrictions are removed when `hide` method is called, and [`plainoverlayhide`](#plainoverlayhide) event is triggered.  
+For example, this is used to do something about the element (e.g. changing scroll position) while the overlay is shown.
 
 ### Initialize
 
@@ -228,7 +232,8 @@ $('#form1').on('plainoverlayshow', function(event) {
 
 ### `plainoverlayhide`
 
-Triggered when the overlay is hidden. (after the fading effect took [`options.duration`](#duration) to complete.)  
+Triggered when the overlay is hidden.  
+By default, it is triggered after the fading effect took [`options.duration`](#duration) to complete. If [`hide`](#hide) method is called with `ignoreComplete` argument, it is triggered when `hide` method is called.  
 An event handler can be attached when initializing via [`options.hide`](#show-hide) as well.
 
 ```js

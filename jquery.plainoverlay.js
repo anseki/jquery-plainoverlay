@@ -2,7 +2,7 @@
  * jQuery.plainOverlay
  * https://github.com/anseki/jquery-plainoverlay
  *
- * Copyright (c) 2015 anseki
+ * Copyright (c) 2016 anseki
  * Licensed under the MIT license.
  */
 
@@ -290,11 +290,21 @@ Overlay.prototype.show = function() {
   }
 };
 
-Overlay.prototype.hide = function() {
+Overlay.prototype.hide = function(ignoreComplete) {
   var that = this;
+
+  function finish() {
+    that.reset();
+    that.jqTargetOrg.trigger(EVENT_TYPE_HIDE);
+  }
+
   if (!that.isShown) { return; }
-  that.jqOverlay.stop().fadeOut(that.duration,
-    function() { that.reset(); that.jqTargetOrg.trigger(EVENT_TYPE_HIDE); });
+  if (ignoreComplete) {
+    finish();
+    that.jqOverlay.stop().fadeOut(that.duration);
+  } else {
+    that.jqOverlay.stop().fadeOut(that.duration, finish);
+  }
   if (that.jqProgress) { that.jqProgress.fadeOut(that.duration); }
 };
 
@@ -396,10 +406,10 @@ function overlayShow(jq, options) {
   });
 }
 
-function overlayHide(jq) {
+function overlayHide(jq, ignoreComplete) {
   return jq.each(function() {
     var overlay = $(this).data(APP_NAME);
-    if (overlay) { overlay.hide(); }
+    if (overlay) { overlay.hide(ignoreComplete); }
   });
 }
 
@@ -418,7 +428,7 @@ function overlaySetOption(jq, name, newValue) {
 $.fn[APP_NAME] = function(action, arg1, arg2) {
   return (
     action === 'show' ?   overlayShow(this, arg1) :
-    action === 'hide' ?   overlayHide(this) :
+    action === 'hide' ?   overlayHide(this, arg1) :
     action === 'option' ? overlaySetOption(this, arg1, arg2) :
                           init(this, action)); // action = options.
 };
