@@ -286,7 +286,7 @@ Overlay.prototype.show = function() {
     function() { that.jqTargetOrg.trigger(EVENT_TYPE_SHOW); });
   if (that.jqProgress) {
     if (that.showProgress) { that.showProgress(true); }
-    that.jqProgress.fadeIn(that.duration);
+    that.jqProgress.stop().fadeIn(that.duration);
   }
 };
 
@@ -305,7 +305,7 @@ Overlay.prototype.hide = function(ignoreComplete) {
   } else {
     that.jqOverlay.stop().fadeOut(that.duration, finish);
   }
-  if (that.jqProgress) { that.jqProgress.fadeOut(that.duration); }
+  if (that.jqProgress) { that.jqProgress.stop().fadeOut(that.duration); }
 };
 
 Overlay.prototype.adjust = function() {
