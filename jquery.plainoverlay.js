@@ -164,6 +164,7 @@ function Overlay(jqTarget, options, curObject) {
   that.jqWin = that.jqWin || $(window);
   that.elmDoc = that.elmDoc || document;
   that.isBody = that.jqTarget.get(0).nodeName.toLowerCase() === 'body';
+  that.jqView = that.isBody ? that.jqWin : that.jqTarget;
 
   if (curObject) {
     // Remove jqProgress that exists always, because it may be replaced.
@@ -214,9 +215,7 @@ function Overlay(jqTarget, options, curObject) {
   })(that);
   that.avoidScroll = (function(that) {
     return function(e) {
-      (function(jqView) {
-        jqView.scrollLeft(that.scrLeft).scrollTop(that.scrTop);
-      })(that.isBody ? that.jqWin : that.jqTarget);
+      that.jqView.scrollLeft(that.scrLeft).scrollTop(that.scrTop);
       e.preventDefault();
       return false;
     };
@@ -273,11 +272,9 @@ Overlay.prototype.show = function() {
   if (that.isBody && !that.isFrame) { that.jqActive = jqActive.blur(); } // Save activeElement
   else if (that.jqTarget.has(jqActive.get(0)).length) { jqActive.blur(); }
   that.jqTarget.focusin(that.avoidFocus);
-  (function(jqView) {
-    that.scrLeft = jqView.scrollLeft();
-    that.scrTop = jqView.scrollTop();
-    jqView.scroll(that.avoidScroll);
-  })(that.isBody ? that.jqWin : that.jqTarget);
+  that.scrLeft = that.jqView.scrollLeft();
+  that.scrTop = that.jqView.scrollTop();
+  that.jqView.scroll(that.avoidScroll);
   that.jqWin.resize(that.callAdjust);
   that.callAdjust();
   that.isShown = true;
@@ -351,31 +348,34 @@ Overlay.prototype.adjust = function() {
 
 Overlay.prototype.reset = function(forceHide) {
   // default: display of jqOverlay and jqProgress is kept
-  var that = this;
   if (forceHide) {
-    that.jqOverlay.css('display', 'none');
-    if (that.jqProgress) { that.jqProgress.css('display', 'none'); }
+    this.jqOverlay.css('display', 'none');
+    if (this.jqProgress) { this.jqProgress.css('display', 'none'); }
   }
-  if (!that.isShown) { return; }
-  that.jqTarget.css({position: that.orgPosition, overflow: that.orgOverflow});
-  if (that.isBody) {
-    if (that.addMarginR) { that.jqTarget.css('marginRight', that.orgMarginR); }
-    if (that.addMarginB) { that.jqTarget.css('marginBottom', that.orgMarginB); }
+  if (!this.isShown) { return; }
+  this.jqTarget.css({position: this.orgPosition, overflow: this.orgOverflow});
+  if (this.isBody) {
+    if (this.addMarginR) { this.jqTarget.css('marginRight', this.orgMarginR); }
+    if (this.addMarginB) { this.jqTarget.css('marginBottom', this.orgMarginB); }
   } else {
-    if (that.addMarginR) {
-      that.jqTarget.css({paddingRight: that.orgMarginR, width: that.orgWidth});
+    if (this.addMarginR) {
+      this.jqTarget.css({paddingRight: this.orgMarginR, width: this.orgWidth});
     }
-    if (that.addMarginB) {
-      that.jqTarget.css({paddingBottom: that.orgMarginB, height: that.orgHeight});
+    if (this.addMarginB) {
+      this.jqTarget.css({paddingBottom: this.orgMarginB, height: this.orgHeight});
     }
   }
-  that.jqTarget.off('focusin', that.avoidFocus);
-  if (that.jqActive && that.jqActive.length) { that.jqActive.focus(); } // Restore activeElement
-  (function(jqView) {
-    jqView.off('scroll', that.avoidScroll).scrollLeft(that.scrLeft).scrollTop(that.scrTop);
-  })(that.isBody ? that.jqWin : that.jqTarget);
-  that.jqWin.off('resize', that.callAdjust);
-  that.isShown = false;
+  this.jqTarget.off('focusin', this.avoidFocus);
+  if (this.jqActive && this.jqActive.length) { this.jqActive.focus(); } // Restore activeElement
+  this.jqView.off('scroll', this.avoidScroll).scrollLeft(this.scrLeft).scrollTop(this.scrTop);
+  this.jqWin.off('resize', this.callAdjust);
+  this.isShown = false;
+};
+
+Overlay.prototype.scroll = function(scrollLen, top) {
+  var dir = top ? 'Top' : 'Left';
+  this.jqView['scroll' + dir]((this['scr' + dir] = scrollLen));
+  this['scr' + dir] = this.jqView['scroll' + dir](); // Get real value.
 };
 
 function init(jq, options) {
@@ -413,6 +413,13 @@ function overlayHide(jq, ignoreComplete) {
   });
 }
 
+function overlayScroll(jq, scrollLen, top) {
+  return jq.each(function() {
+    var overlay = $(this).data(APP_NAME);
+    if (overlay) { overlay.scroll(scrollLen, top); }
+  });
+}
+
 function overlaySetOption(jq, name, newValue) {
   var jqTarget = jq.length ? jq.eq(0) : undefined, // only 1st
     overlay;
@@ -427,10 +434,12 @@ function overlaySetOption(jq, name, newValue) {
 
 $.fn[APP_NAME] = function(action, arg1, arg2) {
   return (
-    action === 'show' ?   overlayShow(this, arg1) :
-    action === 'hide' ?   overlayHide(this, arg1) :
-    action === 'option' ? overlaySetOption(this, arg1, arg2) :
-                          init(this, action)); // action = options.
+    action === 'show' ?       overlayShow(this, arg1) :
+    action === 'hide' ?       overlayHide(this, arg1) :
+    action === 'scrollLeft' ? overlayScroll(this, arg1) :
+    action === 'scrollTop' ?  overlayScroll(this, arg1, true) :
+    action === 'option' ?     overlaySetOption(this, arg1, arg2) :
+                              init(this, action)); // action = options.
 };
 
 })(jQuery);

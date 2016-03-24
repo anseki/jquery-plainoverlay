@@ -107,6 +107,33 @@ Return the current option value (see [Options](#options)) as `optionName`. If `n
 
 *NOTE:* The current version of the plainOverlay can change option value of [`duration`](#duration) and [`opacity`](#opacity) options. Use [Initialize](#initialize) method to update option value of others.
 
+### `scrollLeft`, `scrollTop`
+
+```js
+element = element.plainOverlay('scrollLeft', scrollLen)
+```
+
+```js
+element = element.plainOverlay('scrollTop', scrollLen)
+```
+
+plainOverlay avoid scrolling the element. These methods are used instead of `element.scrollLeft` and `element.scrollTop` methods to scroll the element while the overlay is shown.
+
+For example:
+
+```js
+$('body').plainOverlay('show', {
+  show: function(event) {
+    // Now, the overlay is shown. The user can't scroll the page.
+    // Do something...
+    // Scroll the page to show something.
+    $('body').plainOverlay('scrollLeft', 100).plainOverlay('scrollTop', 400)
+      // And hide the overlay.
+      .plainOverlay('hide');
+  }
+});
+```
+
 ## Options
 
 An `options` Object can be specified to [`show`](#show) or [Initialize](#initialize) method. It can have following properties.
