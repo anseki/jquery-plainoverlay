@@ -13,16 +13,21 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="js/jquery.plainoverlay.min.js"></script>
 
-  <title>plainOverlay</title>
+  <title>jQuery-plainOverlay</title>
 </head>
 <body>
   <header>
-    <h1><a href="./">plainOverlay</a></h1>
+    <h1><a href="./">jQuery-plainOverlay</a></h1>
     <ul id="gh"><li><a href="https://github.com/anseki/jquery-plainoverlay/tarball/master">Download TAR.GZ</a></li><li><a href="https://github.com/anseki/jquery-plainoverlay/zipball/master">Download ZIP</a></li><li><a href="https://github.com/anseki/jquery-plainoverlay">View on GitHub</a></li></ul>
   </header>
   <main>
 
-<p>The simple jQuery Plugin for customizable overlay which covers a page, the elements or the iframe-windows that is specified. plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file.</p>
+<p><strong><em>Recommend: <a href="http://anseki.github.io/plain-overlay/">PlainOverlay</a> instead of "jQuery-plainOverlay"</em></strong><br>
+<em>No dependencies, Modern browsers supported, Lightweight &amp; Single file, and more features</em></p>
+
+<hr>
+
+<p>The simple jQuery Plugin for customizable overlay which covers a page, the elements or the iframe-windows that is specified. jQuery-plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file.</p>
 
 <!-- include "sample_01.html" -->
 <!-- ================ sample -->
@@ -153,9 +158,9 @@ $(function() {
 <!-- ================ /sample -->
 <!-- /include "sample_02.html" -->
 
-<p>The your progress-element (messages or images that means &quot;Please wait...&quot;) can be shown to the users on the overlay. You can free style it to perfect match for your web site. Or plainOverlay has a simple builtin progress-element.</p>
+<p>The your progress-element (messages or images that means &quot;Please wait...&quot;) can be shown to the users on the overlay. You can free style it to perfect match for your web site. Or jQuery-plainOverlay has a simple builtin progress-element.</p>
 
-<p>plainOverlay does:</p>
+<p>jQuery-plainOverlay does:</p>
 
 <ul>
 <li>Covering a page, the elements or the iframe-windows that is specified with the overlay.</li>
@@ -220,13 +225,13 @@ $(function() {
 </code></pre></div>
 <p>Return the current option value (see <a href="#options">Options</a>) as <code>optionName</code>. If <code>newValue</code> is specified, it is set before returning.</p>
 
-<p><em>NOTE:</em> The current version of the plainOverlay can change option value of <a href="#duration"><code>duration</code></a> and <a href="#opacity"><code>opacity</code></a> options. Use <a href="#initialize">Initialize</a> method to update option value of others.</p>
+<p><em>NOTE:</em> The current version of the jQuery-plainOverlay can change option value of <a href="#duration"><code>duration</code></a> and <a href="#opacity"><code>opacity</code></a> options. Use <a href="#initialize">Initialize</a> method to update option value of others.</p>
 
 <h3 id="scrollleft,-scrolltop"><code>scrollLeft</code>, <code>scrollTop</code></h3>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;scrollLeft&#39;</span><span class="p">,</span> <span class="nx">scrollLen</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;scrollTop&#39;</span><span class="p">,</span> <span class="nx">scrollLen</span><span class="p">)</span>
 </code></pre></div>
-<p>plainOverlay avoid scrolling the element. These methods are used instead of <code>element.scrollLeft</code> and <code>element.scrollTop</code> methods to scroll the element while the overlay is shown.</p>
+<p>jQuery-plainOverlay avoid scrolling the element. These methods are used instead of <code>element.scrollLeft</code> and <code>element.scrollTop</code> methods to scroll the element while the overlay is shown.</p>
 
 <p>For example:</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="p">{</span>
@@ -448,17 +453,15 @@ $(function() {
 
 <ul>
 <li>If target is <code>&lt;iframe&gt;</code> element, jQuery 1.10.3+ or 2.0.4+ must be used. (see <a href="http://bugs.jquery.com/ticket/14180">#14180: focusin/out special events don&#39;t work cross-window</a>)</li>
-<li>As everyone knows, IE8- has many problems. CSS <code>position:fixed</code> in HTML without <code>&lt;!DOCTYPE&gt;</code> is ignored.<br>If your web site supports IE8- and it use <code>position:fixed</code>, HTML must include <code>&lt;!DOCTYPE&gt;</code> even if plainOverlay is not used. And plainOverlay uses <code>position:fixed</code>.</li>
+<li>As everyone knows, IE8- has many problems. CSS <code>position:fixed</code> in HTML without <code>&lt;!DOCTYPE&gt;</code> is ignored.<br>If your web site supports IE8- and it use <code>position:fixed</code>, HTML must include <code>&lt;!DOCTYPE&gt;</code> even if jQuery-plainOverlay is not used. And jQuery-plainOverlay uses <code>position:fixed</code>.</li>
 <li><a href="#plainoverlayshow"><code>plainoverlayshow</code></a> and <a href="#plainoverlayhide"><code>plainoverlayhide</code></a> events bubble up the DOM hierarchy.</li>
 </ul>
 
 <h2 id="see-also">See Also</h2>
 
-<p><a href="http://anseki.github.io/jquery-plainmodal">plainModal</a> may be better, if you want the overlay and dialog box (i.e. modal windows).</p>
-
   </main>
   <footer>
-    <p class="copyright">plainOverlay maintained by <a href="https://github.com/anseki">anseki</a></p>
+    <p class="copyright">jQuery-plainOverlay maintained by <a href="https://github.com/anseki">anseki</a></p>
   </footer>
 
 </body>
