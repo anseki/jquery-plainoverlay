@@ -1,15 +1,18 @@
-# plainOverlay
+# jQuery-plainOverlay
 
-The simple jQuery Plugin for customizable overlay which covers a page, the elements or the iframe-windows that is specified. plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file.
+> *** Recommend: [PlainOverlay](http://anseki.github.io/plain-overlay/) instead of "jQuery-plainOverlay" ***
+> ** No dependencies, Modern browsers supported, Lightweight & Single file, and more features **
+
+The simple jQuery Plugin for customizable overlay which covers a page, the elements or the iframe-windows that is specified. jQuery-plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file.
 
 **See <a href="http://anseki.github.io/jquery-plainoverlay/">DEMO</a>**
 
 This is used for making the users wait until the your application is ready.  
 The elements under the overlay don't accept access via mouse or keyboard. And the scrollable elements (e.g. `<body>`, `<div style="overflow:scroll">` or `<iframe>`) which are specified can't scroll.
 
-The your progress-element (messages or images that means "Please wait...") can be shown to the users on the overlay. You can free style it to perfect match for your web site. Or plainOverlay has a simple builtin progress-element.
+The your progress-element (messages or images that means "Please wait...") can be shown to the users on the overlay. You can free style it to perfect match for your web site. Or jQuery-plainOverlay has a simple builtin progress-element.
 
-plainOverlay does:
+jQuery-plainOverlay does:
 
 * Covering a page, the elements or the iframe-windows that is specified with the overlay.
 * Avoiding focusing the elements under the overlay. (by pressing Tab key)
@@ -105,7 +108,7 @@ currentValue = element.plainOverlay('option', optionName[, newValue])
 
 Return the current option value (see [Options](#options)) as `optionName`. If `newValue` is specified, it is set before returning.
 
-*NOTE:* The current version of the plainOverlay can change option value of [`duration`](#duration) and [`opacity`](#opacity) options. Use [Initialize](#initialize) method to update option value of others.
+*NOTE:* The current version of the jQuery-plainOverlay can change option value of [`duration`](#duration) and [`opacity`](#opacity) options. Use [Initialize](#initialize) method to update option value of others.
 
 ### `scrollLeft`, `scrollTop`
 
@@ -117,7 +120,7 @@ element = element.plainOverlay('scrollLeft', scrollLen)
 element = element.plainOverlay('scrollTop', scrollLen)
 ```
 
-plainOverlay avoid scrolling the element. These methods are used instead of `element.scrollLeft` and `element.scrollTop` methods to scroll the element while the overlay is shown.
+jQuery-plainOverlay avoid scrolling the element. These methods are used instead of `element.scrollLeft` and `element.scrollTop` methods to scroll the element while the overlay is shown.
 
 For example:
 
@@ -273,7 +276,7 @@ $('#form1').on('plainoverlayhide', function(event) {
 
 - If target is `<iframe>` element, jQuery 1.10.3+ or 2.0.4+ must be used. (see [#14180: focusin/out special events don't work cross-window](http://bugs.jquery.com/ticket/14180))
 - As everyone knows, IE8- has many problems. CSS `position:fixed` in HTML without `<!DOCTYPE>` is ignored.  
-If your web site supports IE8- and it use `position:fixed`, HTML must include `<!DOCTYPE>` even if plainOverlay is not used. And plainOverlay uses `position:fixed`.
+If your web site supports IE8- and it use `position:fixed`, HTML must include `<!DOCTYPE>` even if jQuery-plainOverlay is not used. And jQuery-plainOverlay uses `position:fixed`.
 - [`plainoverlayshow`](#plainoverlayshow) and [`plainoverlayhide`](#plainoverlayhide) events bubble up the DOM hierarchy.
 
 ## See Also
