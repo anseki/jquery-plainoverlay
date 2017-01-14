@@ -1,7 +1,7 @@
 # jQuery-plainOverlay
 
-****Recommend: [PlainOverlay](http://anseki.github.io/plain-overlay/) instead of "jQuery-plainOverlay"****  
-***No dependencies, Modern browsers supported, Lightweight & Single file, and more features***
+***Recommend: [PlainOverlay](http://anseki.github.io/plain-overlay/) instead of "jQuery-plainOverlay"***  
+*No dependencies, Modern browsers supported, Lightweight & Single file, and more features*
 
 ---
 
