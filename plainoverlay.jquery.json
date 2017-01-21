@@ -19,9 +19,9 @@
   "dependencies": {
     "jquery": ">=1.8"
   },
-  "homepage": "http://anseki.github.io/jquery-plainoverlay/",
-  "docs": "http://anseki.github.io/jquery-plainoverlay/",
-  "download": "http://anseki.github.io/jquery-plainoverlay/",
+  "homepage": "https://anseki.github.io/jquery-plainoverlay/",
+  "docs": "https://anseki.github.io/jquery-plainoverlay/",
+  "download": "https://anseki.github.io/jquery-plainoverlay/",
   "bugs": "https://github.com/anseki/jquery-plainoverlay/issues",
   "licenses": "MIT",
   "author": {

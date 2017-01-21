@@ -1,13 +1,13 @@
 # jQuery-plainOverlay
 
-***Recommend: [PlainOverlay](http://anseki.github.io/plain-overlay/) instead of "jQuery-plainOverlay"***  
+***Recommend: [PlainOverlay](https://anseki.github.io/plain-overlay/) instead of "jQuery-plainOverlay"***  
 *No dependencies, Modern browsers supported, Lightweight & Single file, and more features*
 
 ---
 
 The simple jQuery Plugin for customizable overlay which covers a page, the elements or the iframe-windows that is specified. jQuery-plainOverlay has basic functions only, and it has no image files and no CSS files. Just one small file.
 
-**See <a href="http://anseki.github.io/jquery-plainoverlay/">DEMO</a>**
+**See <a href="https://anseki.github.io/jquery-plainoverlay/">DEMO</a>**
 
 This is used for making the users wait until the your application is ready.  
 The elements under the overlay don't accept access via mouse or keyboard. And the scrollable elements (e.g. `<body>`, `<div style="overflow:scroll">` or `<iframe>`) which are specified can't scroll.
@@ -283,4 +283,4 @@ If your web site supports IE8- and it use `position:fixed`, HTML must include `<
 
 ## See Also
 
-[plainModal](http://anseki.github.io/jquery-plainmodal/) may be better, if you want the overlay and dialog box (i.e. modal windows).
+[plainModal](https://anseki.github.io/jquery-plainmodal/) may be better, if you want the overlay and dialog box (i.e. modal windows).
