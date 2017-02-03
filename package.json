@@ -1,6 +1,6 @@
 {
   "name": "jquery-plainoverlay",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "title": "plainOverlay",
   "description": "The simple jQuery Plugin for customizable overlay which covers a page, elements or iframe-windows that is specified.",
   "keywords": [

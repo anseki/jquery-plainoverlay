@@ -1,8 +1,8 @@
 /*
  * jQuery.plainOverlay
- * https://github.com/anseki/jquery-plainoverlay
+ * https://anseki.github.io/jquery-plainoverlay/
  *
- * Copyright (c) 2016 anseki
+ * Copyright (c) 2017 anseki
  * Licensed under the MIT license.
  */
 

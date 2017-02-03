@@ -1,7 +1,9 @@
 # jQuery-plainOverlay
 
+[![npm](https://img.shields.io/npm/v/jquery-plainoverlay.svg)](https://www.npmjs.com/package/jquery-plainoverlay) [![GitHub issues](https://img.shields.io/github/issues/anseki/jquery-plainoverlay.svg)](https://github.com/anseki/jquery-plainoverlay/issues) [![David](https://img.shields.io/david/anseki/jquery-plainoverlay.svg)](package.json) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE-MIT)
+
 ***Recommend: [PlainOverlay](https://anseki.github.io/plain-overlay/) instead of "jQuery-plainOverlay"***  
-*No dependencies, Modern browsers supported, Lightweight & Single file, and more features*
+*No dependency, Modern browsers supported, Lightweight & Single file, and more features*
 
 ---
 
