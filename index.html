@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/default.css">
   <link rel="stylesheet" href="css/sample.css">
   <!-- Libs for sample codes must be loaded in "head". -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="js/jquery.plainoverlay.min.js"></script>
 
   <title>jQuery-plainOverlay</title>
@@ -22,8 +22,9 @@
   </header>
   <main>
 
-<p><strong><em>Recommend: <a href="http://anseki.github.io/plain-overlay/">PlainOverlay</a> instead of "jQuery-plainOverlay"</em></strong><br>
-<em>No dependencies, Modern browsers supported, Lightweight &amp; Single file, and more features</em></p>
+<p><a href="https://www.npmjs.com/package/jquery-plainoverlay"><img src="https://img.shields.io/npm/v/jquery-plainoverlay.svg" alt="npm"></a> <a href="https://github.com/anseki/jquery-plainoverlay/issues"><img src="https://img.shields.io/github/issues/anseki/jquery-plainoverlay.svg" alt="GitHub issues"></a> <a href="package.json"><img src="https://img.shields.io/david/anseki/jquery-plainoverlay.svg" alt="David"></a> <a href="LICENSE-MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license"></a></p>
+
+<p><strong><em>Recommend: <a href="https://anseki.github.io/plain-overlay/">PlainOverlay</a> instead of &quot;jQuery-plainOverlay&quot;</em></strong><br><em>No dependency, Modern browsers supported, Lightweight &amp; Single file, and more features</em></p>
 
 <hr>
 
@@ -227,7 +228,7 @@ $(function() {
 
 <p><em>NOTE:</em> The current version of the jQuery-plainOverlay can change option value of <a href="#duration"><code>duration</code></a> and <a href="#opacity"><code>opacity</code></a> options. Use <a href="#initialize">Initialize</a> method to update option value of others.</p>
 
-<h3 id="scrollleft,-scrolltop"><code>scrollLeft</code>, <code>scrollTop</code></h3>
+<h3 id="scrollleft-scrolltop"><code>scrollLeft</code>, <code>scrollTop</code></h3>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;scrollLeft&#39;</span><span class="p">,</span> <span class="nx">scrollLen</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">plainOverlay</span><span class="p">(</span><span class="s1">&#39;scrollTop&#39;</span><span class="p">,</span> <span class="nx">scrollLen</span><span class="p">)</span>
 </code></pre></div>
@@ -415,7 +416,7 @@ $(function() {
 
 <p>A <code>z-index</code> CSS property of the overlay.</p>
 
-<h3 id="show,-hide"><code>show</code>, <code>hide</code></h3>
+<h3 id="show-hide"><code>show</code>, <code>hide</code></h3>
 
 <p>Type: Function<br>Default: <code>undefined</code></p>
 
@@ -458,6 +459,8 @@ $(function() {
 </ul>
 
 <h2 id="see-also">See Also</h2>
+
+<p><a href="https://anseki.github.io/jquery-plainmodal/">plainModal</a> may be better, if you want the overlay and dialog box (i.e. modal windows).</p>
 
   </main>
   <footer>
