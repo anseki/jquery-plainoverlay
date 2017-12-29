@@ -285,4 +285,5 @@ If your web site supports IE8- and it use `position:fixed`, HTML must include `<
 
 ## See Also
 
-[plainModal](https://anseki.github.io/jquery-plainmodal/) may be better, if you want the overlay and dialog box (i.e. modal windows).
+- [PlainOverlay](https://anseki.github.io/plain-overlay/) : The simple library for customizable overlay which covers all or part of a web page.
+- [PlainModal](https://anseki.github.io/plain-modal/) : The simple library for fully customizable modal window in a web page.
